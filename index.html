@@ -2164,55 +2164,52 @@
       a.click();
     }
 
-    async function pushToGitHub() {
-      const repo = document.getElementById("gh-repo-input").value.trim();
-      const path = document.getElementById("gh-path-input").value.trim() || "data.md";
-      const token = document.getElementById("gh-token-input").value.trim();
-      const statusEl = document.getElementById("gh-status-text");
+    async function pushGithub() {
+  saveGhInputs();
+  const st = document.getElementById('ghStatus');
+  if (!state.ghRepo || !state.ghToken) { st.textContent = 'впиши repo и token'; return; }
+  st.textContent = 'отправка...';
+  try {
+    const cleanRepo = state.ghRepo.trim().replace(/^\/+|\/+$/g, '');
+    const cleanPath = (state.ghPath || 'p5-hud.md').trim().replace(/^\/+/, '');
+    const baseUrl = `https://api.github.com/repos/${cleanRepo}/contents/${cleanPath}`;
+    const headers = {
+      'Authorization': `Bearer ${state.ghToken.trim()}`,
+      'Accept': 'application/vnd.github+json'
+    };
 
-      state.github = { repo, path, token };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-
-      if (!repo || !token) {
-        statusEl.textContent = "укажи репозиторий и токен";
-        return;
-      }
-
-      statusEl.textContent = "сохранение в github...";
-      try {
-        const apiUrl = `https://api.github.com/repos/${repo}/contents/${path}`;
-        let sha = null;
-        const getRes = await fetch(apiUrl, {
-          headers: { Authorization: `token ${token}` }
-        });
-        if (getRes.ok) {
-          const getJson = await getRes.json();
-          sha = getJson.sha;
-        }
-
-        const mdContent = generateMarkdownContent();
-        const encoded = btoa(unescape(encodeURIComponent(mdContent)));
-
-        const putRes = await fetch(apiUrl, {
-          method: "PUT",
-          headers: {
-            Authorization: `token ${token}`,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            message: `update tracker ${formatTimeStamp()}`,
-            content: encoded,
-            ...(sha ? { sha } : {})
-          })
-        });
-
-        if (!putRes.ok) throw new Error("github api error");
-        statusEl.textContent = "успешно сохранено в github ✓";
-        showToast("сохранено в github ✓");
-      } catch (e) {
-        statusEl.textContent = "ошибка сохранения (проверь токен и права repo)";
-      }
+    // 1. Запрашиваем актуальный sha файла в обход кеша браузера (?t=...), чтобы не было ошибки 409/422
+    let sha = undefined;
+    const getRes = await fetch(`${baseUrl}?t=${Date.now()}`, {
+      method: 'GET',
+      headers,
+      cache: 'no-store'
+    });
+    if (getRes.ok) {
+      const getJson = await getRes.json();
+      sha = getJson.sha;
     }
+
+    // 2. Кодируем текст .md и отправляем с актуальным sha
+    const contentB64 = btoa(unescape(encodeURIComponent(buildMarkdown())));
+    const bodyObj = { message: 'update p5 hud', content: contentB64 };
+    if (sha) bodyObj.sha = sha;
+
+    const putRes = await fetch(baseUrl, {
+      method: 'PUT',
+      headers: { ...headers, 'Content-Type': 'application/json' },
+      body: JSON.stringify(bodyObj)
+    });
+
+    if (!putRes.ok) {
+      const errData = await putRes.json().catch(() => ({}));
+      throw new Error(`${putRes.status}: ${errData.message || 'error'}`);
+    }
+    st.textContent = 'сохранено в github ✓ (' + new Date().toLocaleTimeString().slice(0,5) + ')';
+  } catch (e) {
+    st.textContent = 'ошибка: ' + e.message;
+  }
+}
 
     async function pullFromGitHub() {
       const repo = document.getElementById("gh-repo-input").value.trim();
