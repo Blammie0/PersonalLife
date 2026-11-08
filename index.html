@@ -2164,93 +2164,135 @@
       a.click();
     }
 
-    async function pushToGithub() {
-  saveGhInputs();
-  const st = document.getElementById('ghStatus');
-  if (!state.ghRepo || !state.ghToken) { st.textContent = 'впиши repo и token'; return; }
-  st.textContent = 'отправка...';
-  try {
-    const cleanRepo = state.ghRepo.trim().replace(/^\/+|\/+$/g, '');
-    const cleanPath = (state.ghPath || 'p5-hud.md').trim().replace(/^\/+/, '');
-    const baseUrl = `https://api.github.com/repos/${cleanRepo}/contents/${cleanPath}`;
-    const headers = {
-      'Authorization': `Bearer ${state.ghToken.trim()}`,
-      'Accept': 'application/vnd.github+json'
-    };
+    async function pushToGitHub() {
+      readGithubInputs();
 
-    // 1. Запрашиваем актуальный sha файла в обход кеша браузера (?t=...), чтобы не было ошибки 409/422
-    let sha = undefined;
-    const getRes = await fetch(`${baseUrl}?t=${Date.now()}`, {
-      method: 'GET',
-      headers,
-      cache: 'no-store'
-    });
-    if (getRes.ok) {
-      const getJson = await getRes.json();
-      sha = getJson.sha;
-    }
-
-    // 2. Кодируем текст .md и отправляем с актуальным sha
-    const contentB64 = btoa(unescape(encodeURIComponent(buildMarkdown())));
-    const bodyObj = { message: 'update p5 hud', content: contentB64 };
-    if (sha) bodyObj.sha = sha;
-
-    const putRes = await fetch(baseUrl, {
-      method: 'PUT',
-      headers: { ...headers, 'Content-Type': 'application/json' },
-      body: JSON.stringify(bodyObj)
-    });
-
-    if (!putRes.ok) {
-      const errData = await putRes.json().catch(() => ({}));
-      throw new Error(`${putRes.status}: ${errData.message || 'error'}`);
-    }
-    st.textContent = 'сохранено в github ✓ (' + new Date().toLocaleTimeString().slice(0,5) + ')';
-  } catch (e) {
-    st.textContent = 'ошибка: ' + e.message;
-  }
-}
-
-    async function pullFromGitHub() {
-      const repo = document.getElementById("gh-repo-input").value.trim();
-      const path = document.getElementById("gh-path-input").value.trim() || "data.md";
-      const token = document.getElementById("gh-token-input").value.trim();
-      const statusEl = document.getElementById("gh-status-text");
-
-      state.github = { repo, path, token };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-
-      if (!repo || !token) {
-        statusEl.textContent = "укажи репозиторий и токен";
+      if (!state.github.repo || !state.github.token) {
+        openSyncModal();
+        updateSyncStatusUI("error", "✗ впиши ник/репозиторий и токен ghp_...");
         return;
       }
 
-      statusEl.textContent = "загрузка из github...";
+      updateSyncStatusUI("saving", "⏳ сохранение в github...");
+
       try {
-        const apiUrl = `https://api.github.com/repos/${repo}/contents/${path}`;
-        const res = await fetch(apiUrl, {
-          headers: { Authorization: `token ${token}` }
+        const cleanRepo = state.github.repo.trim().replace(/^https?:\/\/github\.com\//i, "").replace(/^\/+|\/+$/g, "");
+        const cleanPath = (state.github.path || "p5-hud.md").trim().replace(/^\/+/, "");
+        const baseUrl = `https://api.github.com/repos/${cleanRepo}/contents/${cleanPath}`;
+        const headers = {
+          "Authorization": `Bearer ${state.github.token.trim()}`,
+          "Accept": "application/vnd.github+json"
+        };
+
+        // 1. Всегда запрашиваем свежий sha в обход кеша браузера (?t=...), чтобы не было ошибки 409 Conflict
+        let sha = null;
+        const getRes = await fetch(`${baseUrl}?t=${Date.now()}`, {
+          method: "GET",
+          headers,
+          cache: "no-store"
         });
-        if (!res.ok) throw new Error("not found");
-        const data = await res.json();
-        const decoded = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ""))));
-        const match = decoded.match(/<!-- P5_STATE_JSON_START\s*([\s\S]*?)\s*P5_STATE_JSON_END -->/);
-        if (match && match[1]) {
-          const loaded = JSON.parse(match[1]);
-          state = { ...state, ...loaded, github: { repo, path, token } };
-          setTheme(state.theme || "jose");
-          setLang(state.lang || "ru");
-          saveState();
-          document.getElementById("md-export-textarea").value = generateMarkdownContent();
-          statusEl.textContent = "данные загружены из github ✓";
-          showToast("загружено из github ✓");
-        } else {
-          statusEl.textContent = "в файле не найден блок состояния";
+
+        if (getRes.ok) {
+          const fileData = await getRes.json();
+          sha = fileData.sha;
+        } else if (getRes.status !== 404) {
+          const errJson = await getRes.json().catch(() => ({}));
+          throw new Error(`GET ${getRes.status}: ${errJson.message || "ошибка доступа"}`);
         }
+
+        // 2. Записываем обновленный .md файл
+        const body = {
+          message: "manual save p5-hud.md",
+          content: utf8ToBase64(generateMarkdown())
+        };
+        if (sha) body.sha = sha;
+
+        const putRes = await fetch(baseUrl, {
+          method: "PUT",
+          headers: {
+            ...headers,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(body)
+        });
+
+        if (!putRes.ok) {
+          const errJson = await putRes.json().catch(() => ({}));
+          throw new Error(`PUT ${putRes.status}: ${errJson.message || "ошибка записи"}`);
+        }
+
+        const nowTime = new Date().toLocaleTimeString().slice(0, 8);
+        state.github.dirty = false;
+        state.github.lastSavedAt = nowTime;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+
+        updateSyncStatusUI("saved", `✓ сохранено в github в ${nowTime}`);
+        showToast(`✓ сохранено в github (${nowTime})`);
       } catch (e) {
-        statusEl.textContent = "ошибка загрузки из github";
+        updateSyncStatusUI("error", `✗ ошибка сохранения: ${e.message}`);
+        showToast(`✗ ошибка: ${e.message}`);
       }
     }
+
+    /* РУЧНАЯ ЗАГРУЗКА ИЗ GITHUB */
+    async function pullFromGitHub() {
+      readGithubInputs();
+
+      if (!state.github.repo || !state.github.token) {
+        openSyncModal();
+        updateSyncStatusUI("error", "✗ впиши ник/репозиторий и токен ghp_...");
+        return;
+      }
+
+      updateSyncStatusUI("saving", "⏳ загрузка из github...");
+
+      try {
+        const cleanRepo = state.github.repo.trim().replace(/^https?:\/\/github\.com\//i, "").replace(/^\/+|\/+$/g, "");
+        const cleanPath = (state.github.path || "p5-hud.md").trim().replace(/^\/+/, "");
+        const url = `https://api.github.com/repos/${cleanRepo}/contents/${cleanPath}?t=${Date.now()}`;
+
+        const res = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${state.github.token.trim()}`,
+            "Accept": "application/vnd.github+json"
+          },
+          cache: "no-store"
+        });
+
+        if (!res.ok) {
+          const errJson = await res.json().catch(() => ({}));
+          throw new Error(`${res.status}: ${errJson.message || "файл не найден"}`);
+        }
+
+        const data = await res.json();
+        const mdText = base64ToUtf8(data.content);
+        const match = mdText.match(/<!--\s*P5_STATE_JSON:(.+?)\s*-->/);
+
+        if (match && match[1]) {
+          const parsed = JSON.parse(match[1]);
+          if (parsed.stats) state.stats = { ...state.stats, ...parsed.stats };
+          if (typeof parsed.walletSom === "number") state.walletSom = parsed.walletSom;
+          if (parsed.lastBought !== undefined) state.lastBought = parsed.lastBought;
+          if (Array.isArray(parsed.deadlines)) state.deadlines = parsed.deadlines;
+          if (parsed.dailyBlocks) state.dailyBlocks = { ...state.dailyBlocks, ...parsed.dailyBlocks };
+          if (Array.isArray(parsed.history)) state.history = parsed.history;
+        }
+
+        const nowTime = new Date().toLocaleTimeString().slice(0, 8);
+        state.github.dirty = false;
+        state.github.lastSavedAt = nowTime;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+
+        renderApp();
+        updateSyncStatusUI("saved", `✓ загружено из github в ${nowTime}`);
+        showToast(`✓ данные загружены из github (${nowTime})`);
+      } catch (e) {
+        updateSyncStatusUI("error", `✗ ошибка загрузки: ${e.message}`);
+        showToast(`✗ ошибка загрузки: ${e.message}`);
+      }
+    }
+
 
     // Инициализация при старте
     setTheme(state.theme || "jose");
