@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="p5 tracker" />
-  <meta name="theme-color" content="#070b19" id="meta-theme-color" />
+  <meta name="theme-color" content="#07192e" id="meta-theme-color" />
   <title>p5 tracker</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,49 +16,50 @@
 
   <style>
     /* ==========================================================================
-       1. ТЕМАТИЧЕСКИЕ ПЕРЕМЕННЫЕ (3 ТЕМЫ: ДЖОЗЕ ★, ПЕРСОНА, СТРОГАЯ)
+       1. ПЕРЕМЕННЫЕ ТЕМ (ЧЕТКИЕ, КОНТРАСТНЫЕ, БЕЗ МЫЛА)
        ========================================================================== */
     :root {
-      --bg-main: #070b19;
-      --bg-panel: rgba(14, 21, 42, 0.92);
-      --bg-card: rgba(22, 32, 60, 0.95);
-      --bg-input: #0a1022;
-      --text-main: #f8f9fc;
-      --text-muted: #9aa8c7;
-      --border-main: #2c3e6b;
-      --border-strong: #ffffff;
-      --accent: #ffe135;
-      --accent-soft: rgba(255, 225, 53, 0.16);
-      --accent-2: #00f5d4;
-      --danger: #ff3355;
-      --ok: #2ec4b6;
-      --warn: #ffbe0b;
-      --radius-panel: 18px;
-      --radius-card: 14px;
-      --radius-btn: 999px;
-      --shadow-panel: 0 10px 30px rgba(0, 0, 0, 0.45);
+      --bg-main: #0e0e12;
+      --bg-panel: #16161d;
+      --bg-card: #1e1e28;
+      --bg-input: #101016;
+      --text-main: #f4f4f6;
+      --text-muted: #9898a8;
+      --border-main: #343446;
+      --border-strong: #f4f4f6;
+      --accent: #e60026;
+      --accent-soft: rgba(230, 0, 38, 0.15);
+      --accent-2: #ffcc00;
+      --radius-panel: 0px;
+      --radius-card: 0px;
+      --radius-input: 0px;
+      --radius-btn: 0px;
+      --shadow-panel: 5px 5px 0px #e60026;
+      --shadow-card: 3px 3px 0px #000000;
     }
 
-    /* Тема 1: Магазин Джозе в Мементосе (по умолчанию) */
-    body.theme-jose {
-      --bg-main: #070b19;
-      --bg-panel: rgba(13, 20, 40, 0.9);
-      --bg-card: rgba(21, 31, 58, 0.92);
-      --bg-input: #090e20;
-      --text-main: #ffffff;
-      --text-muted: #9eb0d4;
-      --border-main: #2e4272;
-      --border-strong: #ffffff;
-      --accent: #ffe135;
-      --accent-soft: rgba(255, 225, 53, 0.18);
-      --accent-2: #72efdd;
-      --radius-panel: 18px;
-      --radius-card: 14px;
-      --radius-btn: 999px;
-      --shadow-panel: 0 10px 28px rgba(0, 0, 0, 0.5);
+    /* Тема 1: Строгая (спокойный графитовый минимализм) */
+    body.theme-strict {
+      --bg-main: #111215;
+      --bg-panel: #181a1f;
+      --bg-card: #20232a;
+      --bg-input: #121418;
+      --text-main: #ececf0;
+      --text-muted: #8b8e99;
+      --border-main: #323642;
+      --border-strong: #6e7385;
+      --accent: #e4e4e9;
+      --accent-soft: rgba(228, 228, 233, 0.12);
+      --accent-2: #a5aab8;
+      --radius-panel: 6px;
+      --radius-card: 4px;
+      --radius-input: 4px;
+      --radius-btn: 4px;
+      --shadow-panel: 0px 6px 20px rgba(0, 0, 0, 0.35);
+      --shadow-card: none;
     }
 
-    /* Тема 2: Персона (контрастная черно-бело-красная без мыла) */
+    /* Тема 2: Персона (черно-бело-красная классика) */
     body.theme-p5 {
       --bg-main: #0b0b0e;
       --bg-panel: #141419;
@@ -69,35 +70,39 @@
       --border-main: #383847;
       --border-strong: #ffffff;
       --accent: #e60026;
-      --accent-soft: rgba(230, 0, 38, 0.2);
-      --accent-2: #00f5d4;
+      --accent-soft: rgba(230, 0, 38, 0.18);
+      --accent-2: #ffcc00;
       --radius-panel: 0px;
       --radius-card: 0px;
+      --radius-input: 0px;
       --radius-btn: 0px;
       --shadow-panel: 5px 5px 0px #e60026;
+      --shadow-card: 3px 3px 0px #000000;
     }
 
-    /* Тема 3: Строгая (спокойная графитовая без декора) */
-    body.theme-strict {
-      --bg-main: #101114;
-      --bg-panel: #18191e;
-      --bg-card: #202229;
-      --bg-input: #121317;
-      --text-main: #ececf0;
-      --text-muted: #8b8d98;
-      --border-main: #323540;
-      --border-strong: #636778;
-      --accent: #e4e4e9;
-      --accent-soft: rgba(228, 228, 233, 0.12);
-      --accent-2: #a1a5b5;
-      --radius-panel: 6px;
-      --radius-card: 6px;
-      --radius-btn: 6px;
-      --shadow-panel: 0 4px 16px rgba(0, 0, 0, 0.35);
+    /* Тема 3: Магазин Джозе в Мементосе (небо, закругления, звездочки, желтые таблички) */
+    body.theme-jose {
+      --bg-main: #061529;
+      --bg-panel: rgba(8, 22, 42, 0.86);
+      --bg-card: rgba(12, 31, 58, 0.88);
+      --bg-input: rgba(6, 16, 32, 0.92);
+      --text-main: #ffffff;
+      --text-muted: #a9cbe0;
+      --border-main: rgba(148, 226, 255, 0.38);
+      --border-strong: #ffffff;
+      --accent: #ffe83b;
+      --accent-soft: rgba(255, 232, 59, 0.18);
+      --accent-2: #8be8ff;
+      --radius-panel: 20px;
+      --radius-card: 14px;
+      --radius-input: 12px;
+      --radius-btn: 999px;
+      --shadow-panel: 0px 0px 22px rgba(139, 232, 255, 0.22), 0px 8px 24px rgba(0, 0, 0, 0.45);
+      --shadow-card: 0px 4px 12px rgba(0, 0, 0, 0.35);
     }
 
     /* ==========================================================================
-       2. БАЗОВЫЙ СБРОС И ЧЕТКАЯ ТИПОГРАФИКА
+       2. БАЗОВЫЙ СБРОС И ЧЕТКАЯ ТИПОГРАФИКА (БЕЗ SKEW / ROTATE НА ТЕКСТЕ)
        ========================================================================== */
     * {
       box-sizing: border-box;
@@ -114,24 +119,25 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
+      text-transform: lowercase;
       min-height: 100vh;
       overflow-x: hidden;
     }
 
-    /* ==========================================================================
-       3. ЗВЕЗДНОЕ НЕБО И ГИРЛЯНДЫ ЗВЕЗД ДЖОЗЕ (ТОЛЬКО В ТЕМЕ ДЖОЗЕ)
-       ========================================================================== */
+    /* Небесный фон Джозе (только для темы джозе ★) */
+    body.theme-jose {
+      background: linear-gradient(180deg, #030b17 0%, #081e38 45%, #134668 80%, #4392b5 95%, #a8f0ff 100%);
+      background-attachment: fixed;
+    }
+
     #jose-sky-backdrop {
       display: none;
       position: fixed;
       inset: 0;
-      z-index: 0;
+      width: 100vw;
+      height: 100vh;
       pointer-events: none;
-      background:
-        radial-gradient(120% 55% at 50% 108%, rgba(215, 255, 248, 0.42) 0%, rgba(72, 202, 228, 0.18) 28%, rgba(7, 11, 25, 0) 68%),
-        radial-gradient(circle at 20% 25%, rgba(36, 62, 125, 0.35) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(28, 54, 115, 0.35) 0%, transparent 50%),
-        linear-gradient(180deg, #050814 0%, #091229 65%, #102544 100%);
+      z-index: 0;
     }
 
     body.theme-jose #jose-sky-backdrop {
@@ -139,85 +145,350 @@
     }
 
     /* ==========================================================================
-       4. КОНТЕЙНЕР И 3-КОЛОНОЧНАЯ СЕТКА (ГОРИЗОНТАЛЬ НА ПК, ВЕРТИКАЛЬ НА ТЕЛЕФОНЕ)
+       3. СЕТКА ПРИЛОЖЕНИЯ (3 КОЛОНКИ НА ПК, ВЕРТИКАЛЬНАЯ ПРОКРУТКА НА ТЕЛЕФОНЕ)
        ========================================================================== */
     .app-container {
       position: relative;
       z-index: 1;
       max-width: 1640px;
       margin: 0 auto;
-      padding: 16px 20px 36px 20px;
+      padding: 18px 22px 36px 22px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 20px;
     }
 
     .main-grid {
       display: grid;
-      grid-template-columns: 380px 1fr 420px;
-      gap: 20px;
+      grid-template-columns: 390px 1fr 430px;
+      gap: 22px;
       align-items: start;
     }
 
     @media (max-width: 1200px) {
       .app-container {
-        padding: 12px 12px 40px 12px;
+        padding: 12px 14px 42px 14px;
       }
       .main-grid {
         grid-template-columns: 1fr;
-        gap: 18px;
+        gap: 20px;
       }
     }
 
     /* ==========================================================================
-       5. ВЕРХНЯЯ ПАНЕЛЬ И ИНДИКАТОР РУЧНОГО СОХРАНЕНИЯ GITHUB
+       4. ПАНЕЛИ, ЗАГОЛОВКИ И КАРТОЧКИ
+       ========================================================================== */
+    .panel {
+      background: var(--bg-panel);
+      border: 2.5px solid var(--border-strong);
+      border-radius: var(--radius-panel);
+      padding: 20px;
+      box-shadow: var(--shadow-panel);
+      position: relative;
+    }
+
+    body.theme-jose .panel {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--border-main);
+    }
+
+    .panel-title {
+      font-size: 1.1rem;
+      font-weight: 900;
+      letter-spacing: 0.4px;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--bg-card);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-card);
+    }
+
+    /* Заголовки в теме Персоны */
+    body.theme-p5 .panel-title {
+      background: var(--accent);
+      color: #ffffff;
+      border-left: none;
+      clip-path: polygon(0% 0%, 97% 4%, 100% 100%, 2% 96%);
+      padding: 6px 16px;
+    }
+
+    /* Заголовки в теме Джозе — как таблички "Items • TRADE ITEMS •" */
+    body.theme-jose .panel-title {
+      background: #ffe83b;
+      color: #090d16;
+      border: 2.5px solid #ffffff;
+      border-radius: 12px;
+      box-shadow: inset 0 0 0 2px #090d16, 0 4px 12px rgba(255, 232, 59, 0.35);
+      padding: 6px 16px;
+    }
+
+    body.theme-jose .panel-title::before,
+    body.theme-jose .panel-title::after {
+      content: "•";
+      color: #090d16;
+      font-weight: 900;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-main);
+      border-radius: var(--radius-card);
+      padding: 16px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .card + .card {
+      margin-top: 14px;
+    }
+
+    /* ==========================================================================
+       5. КНОПКИ, БАББЛЫ ДЖОЗЕ И ПОЛЯ ВВОДА
+       ========================================================================== */
+    input, select, button, textarea {
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      text-transform: lowercase;
+    }
+
+    .input-field {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1.5px solid var(--border-main);
+      border-radius: var(--radius-input);
+      color: var(--text-main);
+      padding: 10px 13px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .input-field::placeholder {
+      color: var(--text-muted);
+      opacity: 0.78;
+    }
+
+    .input-field:focus {
+      border-color: var(--accent);
+    }
+
+    body.theme-jose .input-field:focus {
+      border-color: #ffe83b;
+      box-shadow: 0 0 10px rgba(255, 232, 59, 0.25);
+    }
+
+    .btn {
+      background: var(--text-main);
+      color: #090d16;
+      border: 2px solid var(--text-main);
+      border-radius: var(--radius-btn);
+      padding: 9px 16px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    body.theme-strict .btn:hover {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    /* Кнопки в теме Джозе — как желтая плашка "Ask for change" или темный баббл с белым контуром */
+    body.theme-jose .btn {
+      background: #ffe83b;
+      color: #090d16;
+      border: 2px solid #ffffff;
+      border-radius: 999px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+    }
+
+    body.theme-jose .btn:hover {
+      background: #ffffff;
+      color: #090d16;
+      border-color: #ffe83b;
+    }
+
+    .btn-ghost {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1.5px solid var(--border-main);
+      border-radius: var(--radius-btn);
+      padding: 8px 14px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    /* Овальные бабблы Джозе ("Wanna trade flowers?" / "What do you want?") */
+    body.theme-jose .btn-ghost {
+      background: #09111f;
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      border-radius: 999px;
+      color: #ffffff;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--text-main);
+    }
+
+    body.theme-jose .btn-ghost:hover {
+      border-color: #ffe83b;
+      color: #ffe83b;
+    }
+
+    .btn-ghost.active {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    body.theme-strict .btn-ghost.active {
+      background: var(--text-main);
+      color: #101114;
+      border-color: var(--text-main);
+    }
+
+    body.theme-jose .btn-ghost.active {
+      background: #ffe83b;
+      color: #090d16;
+      border-color: #ffffff;
+      font-weight: 900;
+    }
+
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 0.84rem;
+    }
+
+    /* Круглые белые кнопки очков "1 Pt", "2 Pt", "3 Pt", "5 Pt", "10 Pt" как в Cognition у Джозе */
+    .pt-sphere-btn {
+      background: var(--text-main);
+      color: #090d16;
+      border: 2px solid var(--text-main);
+      border-radius: var(--radius-btn);
+      padding: 7px 13px;
+      font-weight: 900;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .pt-sphere-btn:hover {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    body.theme-jose .pt-sphere-btn {
+      width: 46px;
+      height: 46px;
+      padding: 0;
+      border-radius: 50%;
+      background: #ffffff;
+      color: #090d16;
+      border: 2.5px solid #ffe83b;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.88rem;
+      font-weight: 900;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
+    }
+
+    body.theme-jose .pt-sphere-btn:hover {
+      background: #ffe83b;
+      color: #090d16;
+      transform: scale(1.06);
+    }
+
+    /* ==========================================================================
+       6. ВЕРХНЯЯ ПАНЕЛЬ (ШАПКА)
        ========================================================================== */
     .topbar {
       background: var(--bg-panel);
-      border: 2px solid var(--border-strong);
+      border: 2.5px solid var(--border-strong);
       border-radius: var(--radius-panel);
-      padding: 12px 18px;
+      padding: 14px 20px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 16px;
       box-shadow: var(--shadow-panel);
+    }
+
+    body.theme-jose .topbar {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
 
     .date-badge {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .date-big {
-      font-size: 1.9rem;
+      font-size: 2rem;
       font-weight: 900;
       letter-spacing: -0.5px;
       line-height: 1;
     }
 
     .day-pill {
-      background: var(--bg-card);
-      color: var(--text-main);
-      border: 1.5px solid var(--border-strong);
-      border-radius: var(--radius-btn);
-      font-weight: 800;
-      font-size: 0.88rem;
-      padding: 4px 12px;
-    }
-
-    body.theme-p5 .day-pill {
       background: var(--accent);
       color: #ffffff;
+      font-weight: 800;
+      font-size: 0.9rem;
+      padding: 4px 12px;
+      border-radius: var(--radius-btn);
+    }
+
+    body.theme-strict .day-pill {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border-main);
+    }
+
+    body.theme-jose .day-pill {
+      background: #09111f;
+      color: #ffe83b;
+      border: 2px solid #ffffff;
+      border-radius: 999px;
     }
 
     .topbar-controls {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .control-group {
@@ -226,327 +497,108 @@
       border: 1.5px solid var(--border-main);
       border-radius: var(--radius-btn);
       padding: 3px;
-      gap: 3px;
+      gap: 4px;
     }
 
-    /* Плашка статуса синхронизации GitHub */
-    .sync-status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      border-radius: var(--radius-btn);
-      font-size: 0.82rem;
-      font-weight: 800;
-      border: 1.5px solid var(--border-main);
-      background: var(--bg-input);
-      color: var(--text-muted);
-    }
-
-    .sync-status-pill.unsaved {
-      border-color: var(--warn);
-      color: var(--warn);
-      background: rgba(255, 190, 11, 0.12);
-    }
-
-    .sync-status-pill.saving {
-      border-color: var(--accent-2);
-      color: var(--accent-2);
-      background: rgba(0, 245, 212, 0.12);
-    }
-
-    .sync-status-pill.saved {
-      border-color: var(--ok);
-      color: var(--ok);
-      background: rgba(46, 196, 182, 0.14);
-    }
-
-    .sync-status-pill.error {
-      border-color: var(--danger);
-      color: #ff6b85;
-      background: rgba(255, 51, 85, 0.15);
-    }
-
-    /* Плашка обратного отсчета до дедлайна (справа вверху) */
     .countdown-box {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       background: var(--bg-input);
-      border: 1.5px solid var(--border-main);
-      border-radius: var(--radius-btn);
-      padding: 6px 14px;
-      font-size: 0.86rem;
+      border: 2px solid var(--border-main);
+      border-radius: var(--radius-card);
+      padding: 8px 14px;
     }
 
     .countdown-box.urgent {
-      border-color: var(--danger);
-      background: rgba(255, 51, 85, 0.16);
+      border-color: #ff2a4b;
+      background: rgba(255, 42, 75, 0.16);
     }
 
     .countdown-num {
-      font-size: 1.15rem;
+      font-size: 1.35rem;
       font-weight: 900;
-      padding: 2px 9px;
-      border-radius: var(--radius-btn);
+      padding: 3px 10px;
       background: var(--text-main);
-      color: #090d1a;
+      color: #090d16;
+      border-radius: var(--radius-input);
+      line-height: 1.1;
+    }
+
+    body.theme-jose .countdown-num {
+      background: #ffe83b;
+      color: #090d16;
     }
 
     .countdown-box.urgent .countdown-num {
-      background: var(--danger);
+      background: #ff2a4b;
       color: #ffffff;
     }
 
     /* ==========================================================================
-       6. ПАНЕЛИ И ТАБЛИЧКИ В СТИЛЕ МАГАЗИНА ДЖОЗЕ
-       ========================================================================== */
-    .panel {
-      background: var(--bg-panel);
-      border: 2px solid var(--border-strong);
-      border-radius: var(--radius-panel);
-      padding: 18px;
-      box-shadow: var(--shadow-panel);
-    }
-
-    .panel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      padding-bottom: 12px;
-      margin-bottom: 14px;
-      border-bottom: 1.5px solid var(--border-main);
-    }
-
-    .panel-title {
-      font-size: 1rem;
-      font-weight: 900;
-      letter-spacing: 0.3px;
-      padding: 6px 14px;
-      border-radius: 12px;
-      background: var(--accent);
-      color: #090d1a;
-      border: 2px solid #ffffff;
-      box-shadow: 0 0 0 2px #090d1a inset;
-      display: inline-block;
-    }
-
-    body.theme-p5 .panel-title {
-      background: var(--accent);
-      color: #ffffff;
-      border-radius: 0;
-      box-shadow: none;
-    }
-
-    body.theme-strict .panel-title {
-      background: var(--bg-card);
-      color: var(--text-main);
-      border: 1px solid var(--border-strong);
-      border-radius: 6px;
-      box-shadow: none;
-    }
-
-    .card {
-      background: var(--bg-card);
-      border: 1.5px solid var(--border-main);
-      border-radius: var(--radius-card);
-      padding: 14px;
-    }
-
-    .card + .card {
-      margin-top: 12px;
-    }
-
-    /* ==========================================================================
-       7. КНОПКИ И ПОЛЯ ВВОДА (ПОДДЕРЖКА ЗАГЛАВНЫХ И СТРОЧНЫХ БУКВ)
-       ========================================================================== */
-    input, select, textarea, button {
-      font-family: inherit;
-      font-size: 0.94rem;
-      color: var(--text-main);
-    }
-
-    .input-field {
-      width: 100%;
-      background: var(--bg-input);
-      border: 1.5px solid var(--border-main);
-      border-radius: 10px;
-      color: var(--text-main);
-      padding: 9px 12px;
-      font-size: 0.93rem;
-      outline: none;
-      transition: border-color 0.15s ease;
-    }
-
-    body.theme-p5 .input-field {
-      border-radius: 0px;
-    }
-
-    .input-field::placeholder {
-      color: var(--text-muted);
-      opacity: 0.75;
-    }
-
-    .input-field:focus {
-      border-color: var(--accent);
-    }
-
-    .btn {
-      background: var(--accent);
-      color: #090d1a;
-      border: 1.5px solid #ffffff;
-      border-radius: var(--radius-btn);
-      padding: 8px 15px;
-      font-size: 0.88rem;
-      font-weight: 800;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: transform 0.1s ease, filter 0.15s ease;
-      white-space: nowrap;
-    }
-
-    body.theme-p5 .btn {
-      background: var(--accent);
-      color: #ffffff;
-    }
-
-    .btn:hover {
-      filter: brightness(1.08);
-    }
-
-    .btn:active {
-      transform: scale(0.98);
-    }
-
-    .btn-ghost {
-      background: var(--bg-card);
-      color: var(--text-main);
-      border: 1.5px solid var(--border-main);
-      border-radius: var(--radius-btn);
-      padding: 7px 13px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      white-space: nowrap;
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--border-strong);
-    }
-
-    .btn-ghost.active {
-      background: var(--accent);
-      color: #090d1a;
-      border-color: #ffffff;
-      font-weight: 800;
-    }
-
-    body.theme-p5 .btn-ghost.active {
-      background: var(--accent);
-      color: #ffffff;
-    }
-
-    .btn-sm {
-      padding: 5px 11px;
-      font-size: 0.82rem;
-    }
-
-    /* ==========================================================================
-       8. КАЛЕНДАРНАЯ ЛЕНТА НА 14 ДНЕЙ И ДЕДЛАЙНЫ
+       7. МИНИ-КАЛЕНДАРЬ НА 14 ДНЕЙ
        ========================================================================== */
     .cal-strip {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       gap: 6px;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
-    .cal-day {
+    .cal-cell {
       background: var(--bg-input);
       border: 1.5px solid var(--border-main);
-      border-radius: 10px;
+      border-radius: var(--radius-input);
       padding: 6px 4px;
       text-align: center;
-      cursor: pointer;
-      transition: border-color 0.12s ease;
+      font-size: 0.78rem;
     }
 
-    body.theme-p5 .cal-day {
-      border-radius: 0;
-    }
-
-    .cal-day:hover {
+    .cal-cell.is-today {
       border-color: var(--border-strong);
-    }
-
-    .cal-day.today {
-      border-color: var(--accent);
-      background: var(--accent-soft);
       font-weight: 900;
     }
 
-    .cal-day.has-dl {
-      background: var(--danger);
-      border-color: #ffffff;
+    .cal-cell.has-deadline {
+      background: var(--accent-soft);
+      border-color: var(--accent);
       color: #ffffff;
       font-weight: 900;
     }
 
-    .cal-day-wd {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      display: block;
-    }
-
-    .cal-day.has-dl .cal-day-wd {
-      color: #ffe3e8;
-    }
-
-    .cal-day-num {
-      font-size: 0.95rem;
-      font-weight: 800;
+    body.theme-jose .cal-cell.has-deadline {
+      background: #ffe83b;
+      color: #090d16;
+      border-color: #ffffff;
     }
 
     /* ==========================================================================
-       9. РАСПОРЯДОК ДНЯ (4 БЛОКА И 4 КАТЕГОРИИ)
+       8. РАСПОРЯДОК ДНЯ (4 БЛОКА И 4 КАТЕГОРИИ)
        ========================================================================== */
     .block-card {
       background: var(--bg-card);
       border: 1.5px solid var(--border-main);
+      border-left: 5px solid var(--accent);
       border-radius: var(--radius-card);
-      padding: 15px;
+      padding: 16px;
       transition: opacity 0.15s ease;
     }
 
+    body.theme-jose .block-card {
+      border: 2px solid rgba(148, 226, 255, 0.45);
+      border-left: 6px solid #ffe83b;
+    }
+
     .block-card.is-done {
-      border-color: var(--ok);
-      opacity: 0.82;
-    }
-
-    .block-badge {
-      display: inline-block;
-      background: var(--accent);
-      color: #090d1a;
-      font-weight: 900;
-      font-size: 0.86rem;
-      padding: 3px 11px;
-      border-radius: var(--radius-btn);
-    }
-
-    body.theme-p5 .block-badge {
-      color: #ffffff;
+      border-left-color: var(--border-main);
+      opacity: 0.72;
     }
 
     .categories-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 8px;
-      margin: 10px 0;
+      margin: 12px 0;
     }
 
     @media (max-width: 560px) {
@@ -558,10 +610,10 @@
     .cat-btn {
       background: var(--bg-input);
       border: 1.5px solid var(--border-main);
-      border-radius: 10px;
+      border-radius: var(--radius-input);
       color: var(--text-main);
-      padding: 10px 12px;
-      font-size: 0.88rem;
+      padding: 11px 13px;
+      font-size: 0.92rem;
       font-weight: 700;
       text-align: left;
       cursor: pointer;
@@ -569,57 +621,56 @@
       line-height: 1.3;
     }
 
-    body.theme-p5 .cat-btn {
-      border-radius: 0;
-    }
-
     .cat-btn:hover {
-      border-color: var(--border-strong);
+      border-color: var(--text-main);
     }
 
     .cat-btn.selected {
-      background: var(--accent);
-      border-color: #ffffff;
-      color: #090d1a;
-      font-weight: 900;
-    }
-
-    body.theme-p5 .cat-btn.selected {
-      background: var(--accent);
+      background: var(--accent-soft);
+      border-color: var(--accent);
       color: #ffffff;
+      font-weight: 800;
     }
 
     body.theme-strict .cat-btn.selected {
-      background: #2f3340;
-      color: #ffffff;
+      background: #2c303a;
       border-color: #ffffff;
     }
 
+    /* В теме Джозе выбранная категория светится желтой лентой как в списке обмена предметов */
+    body.theme-jose .cat-btn.selected {
+      background: linear-gradient(90deg, #ffe83b 0%, #ffd000 100%);
+      color: #090d16;
+      border-color: #ffffff;
+      font-weight: 900;
+      box-shadow: 0 3px 12px rgba(255, 232, 59, 0.35);
+    }
+
     /* ==========================================================================
-       10. СТАТЫ, КРУГЛЫЕ КНОПКИ PT ДЖОЗЕ И МАГАЗИН (1 ОЧКО = 1 СОМ)
+       9. ЗВЕЗДА СТАТОВ И КОПИЛКА СОМОВ (КАК СЧЕТЧИКИ ЦВЕТОВ И ШТАМПОВ ДЖОЗЕ)
        ========================================================================== */
     .star-wrapper {
       width: 100%;
       background: var(--bg-input);
       border: 1.5px solid var(--border-main);
       border-radius: var(--radius-card);
-      padding: 8px;
-      margin-bottom: 12px;
+      padding: 10px;
+      margin-bottom: 14px;
     }
 
     .stat-pills-row {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 6px;
-      margin-bottom: 12px;
+      gap: 7px;
+      margin-bottom: 14px;
     }
 
     .stat-pill-btn {
       background: var(--bg-card);
       border: 1.5px solid var(--border-main);
-      border-radius: 10px;
-      padding: 8px 10px;
-      font-size: 0.85rem;
+      border-radius: var(--radius-input);
+      padding: 8px 11px;
+      font-size: 0.86rem;
       font-weight: 700;
       display: flex;
       justify-content: space-between;
@@ -628,71 +679,79 @@
       transition: all 0.12s ease;
     }
 
-    body.theme-p5 .stat-pill-btn {
-      border-radius: 0;
+    .stat-pill-btn:hover {
+      border-color: var(--text-main);
     }
 
     .stat-pill-btn.active {
-      background: var(--accent);
-      color: #090d1a;
+      border-color: var(--accent);
+      background: var(--bg-input);
+      color: var(--accent);
+    }
+
+    body.theme-jose .stat-pill-btn.active {
+      background: #ffe83b;
+      color: #090d16;
       border-color: #ffffff;
       font-weight: 900;
     }
 
-    body.theme-p5 .stat-pill-btn.active {
-      color: #ffffff;
-    }
-
-    /* Круглые белые кнопки очков как в меню Cognition у Джозе */
-    .pt-circle-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: #ffffff;
-      color: #090d1a;
-      border: 2px solid var(--accent);
-      font-weight: 900;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.1s ease, background 0.15s ease;
-    }
-
-    body.theme-p5 .pt-circle-btn {
-      border-radius: 0;
-    }
-
-    .pt-circle-btn:hover {
-      background: var(--accent);
-      color: #090d1a;
-      transform: translateY(-2px);
-    }
-
-    /* Черная табличка счетчика цветов/сомов Джозе */
-    .jose-counter-plate {
-      background: #060913;
-      border: 2px solid var(--border-strong);
-      border-radius: 10px;
-      padding: 6px 14px;
-      display: inline-flex;
+    .quick-points-row {
+      display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 8px;
-      font-weight: 900;
-      font-size: 1.15rem;
-      color: var(--accent);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      margin-top: 12px;
+    }
+
+    /* Копилка мотивации (в теме Джозе выглядит как черные таблички ❀ 91 / Stamps: 5 Pt) */
+    .shop-box {
+      background: var(--bg-card);
+      border: 2px solid var(--accent-2);
+      border-radius: var(--radius-card);
+      padding: 16px;
+      margin-top: 18px;
+    }
+
+    body.theme-jose .shop-box {
+      background: rgba(6, 13, 24, 0.94);
+      border: 2.5px solid #ffffff;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+    }
+
+    .jose-counter-plaque {
+      background: #080c14;
+      border: 2px solid var(--border-main);
+      border-radius: var(--radius-input);
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    body.theme-jose .jose-counter-plaque {
+      border-color: rgba(255, 255, 255, 0.35);
+      border-bottom: 3px solid #ffe83b;
+    }
+
+    .last-bought-banner {
+      background: var(--bg-input);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-input);
+      padding: 12px 14px;
+      margin: 12px 0;
     }
 
     /* ==========================================================================
-       11. СПИСКИ ХРОНИКИ И МОДАЛЬНОЕ ОКНО
+       10. ХРОНИКА И МОДАЛЬНОЕ ОКНО
        ========================================================================== */
     .log-list {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      max-height: 320px;
+      gap: 10px;
+      max-height: 360px;
       overflow-y: auto;
       padding-right: 4px;
     }
@@ -700,21 +759,17 @@
     .log-item {
       background: var(--bg-input);
       border: 1px solid var(--border-main);
-      border-left: 3px solid var(--accent);
-      border-radius: 8px;
-      padding: 9px 12px;
-      font-size: 0.88rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 8px;
+      border-left: 3.5px solid var(--accent);
+      border-radius: var(--radius-input);
+      padding: 10px 12px;
+      font-size: 0.9rem;
     }
 
     .empty-state {
-      padding: 18px 12px;
+      padding: 20px 14px;
       text-align: center;
       color: var(--text-muted);
-      font-size: 0.88rem;
+      font-size: 0.92rem;
       border: 1.5px dashed var(--border-main);
       border-radius: var(--radius-card);
       background: var(--bg-input);
@@ -722,23 +777,29 @@
 
     .toast-popup {
       position: fixed;
-      bottom: 22px;
-      right: 22px;
+      bottom: 24px;
+      right: 24px;
       z-index: 9999;
-      background: #090d1a;
+      background: #09111f;
       color: #ffffff;
-      border: 2px solid var(--accent);
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
-      padding: 12px 18px;
+      border: 2.5px solid #ffe83b;
+      border-radius: 999px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      padding: 12px 20px;
       font-weight: 800;
-      font-size: 0.92rem;
+      font-size: 0.95rem;
+      animation: toastSlideIn 0.2s ease-out;
+    }
+
+    @keyframes toastSlideIn {
+      from { transform: translateY(16px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(3, 6, 15, 0.82);
+      background: rgba(0, 0, 0, 0.82);
       z-index: 1000;
       display: none;
       align-items: center;
@@ -751,58 +812,111 @@
     }
 
     .modal-content {
-      background: #0d1428;
-      border: 2px solid var(--border-strong);
+      background: var(--bg-panel);
+      border: 2.5px solid var(--border-strong);
       border-radius: var(--radius-panel);
       max-width: 640px;
       width: 100%;
-      max-height: 92vh;
+      max-height: 90vh;
       overflow-y: auto;
-      padding: 20px;
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75);
+      padding: 22px;
+      box-shadow: var(--shadow-panel);
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-main);
+      border-radius: 3px;
     }
   </style>
 </head>
 <body class="theme-jose">
 
-  <!-- ==================== ФОН НЕБА МЕМЕНТОСА И ЗВЕЗД ДЖОЗЕ ==================== -->
-  <div id="jose-sky-backdrop" aria-hidden="true">
-    <svg width="100%" height="100%" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
-      <!-- Орбитальные дуги Мементоса -->
-      <ellipse cx="800" cy="960" rx="920" ry="420" fill="none" stroke="rgba(114, 239, 221, 0.22)" stroke-width="2" />
-      <ellipse cx="800" cy="980" rx="760" ry="340" fill="none" stroke="rgba(255, 225, 53, 0.18)" stroke-width="1.5" stroke-dasharray="10 14" />
+  <!-- ==================== ФОН МАГАЗИНА ДЖОЗЕ (НЕБО, ОРБИТЫ, ЗВЕЗДЫ И ПОЛУМЕСЯЦЫ) ==================== -->
+  <svg id="jose-sky-backdrop" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="horizonGlow" cx="50%" cy="105%" r="65%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+        <stop offset="22%" stop-color="#9beeff" stop-opacity="0.55" />
+        <stop offset="55%" stop-color="#19648a" stop-opacity="0.18" />
+        <stop offset="100%" stop-color="#040d1a" stop-opacity="0" />
+      </radialGradient>
 
-      <!-- Мелкие мерцающие звезды -->
-      <g fill="#ffffff" opacity="0.65">
-        <circle cx="280" cy="140" r="1.8" />
-        <circle cx="420" cy="90" r="1.4" />
-        <circle cx="610" cy="160" r="2" />
-        <circle cx="780" cy="75" r="1.5" />
-        <circle cx="990" cy="120" r="2.2" />
-        <circle cx="1170" cy="85" r="1.4" />
-        <circle cx="1310" cy="175" r="1.8" />
+      <linearGradient id="goldStarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fff685" />
+        <stop offset="60%" stop-color="#ffe01b" />
+        <stop offset="100%" stop-color="#f5a600" />
+      </linearGradient>
+
+      <!-- Символ 5-конечной звезды Джозе -->
+      <g id="jose-star">
+        <polygon points="0,-28 8,-9 28,-8 12,5 17,25 0,14 -17,25 -12,5 -28,-8 -8,-9" fill="url(#goldStarGrad)" />
       </g>
 
-      <!-- Гирлянда золотых звезд и полумесяцев слева сверху -->
-      <g fill="#ffe135" opacity="0.88">
-        <polygon points="75,20 90,55 128,58 98,82 108,118 75,98 42,118 52,82 22,58 60,55" />
-        <polygon points="155,70 165,94 190,96 170,112 177,136 155,122 133,136 140,112 120,96 145,94" fill="#ffc300" />
-        <polygon points="55,145 64,166 86,168 69,182 75,204 55,191 35,204 41,182 24,168 46,166" />
-        <path d="M120,175 A34,34 0 1,1 85,225 A26,26 0 1,0 120,175 Z" fill="#ffd000" />
+      <!-- Символ полумесяца Джозе -->
+      <g id="jose-moon">
+        <path d="M 10,-24 A 24,24 0 1,0 24,16 A 19,19 0 1,1 10,-24 Z" fill="url(#goldStarGrad)" />
       </g>
+    </defs>
 
-      <!-- Гирлянда золотых звезд и полумесяцев справа сверху -->
-      <g fill="#ffe135" opacity="0.88">
-        <polygon points="1515,25 1530,60 1568,63 1538,87 1548,123 1515,103 1482,123 1492,87 1462,63 1500,60" />
-        <polygon points="1435,80 1445,104 1470,106 1450,122 1457,146 1435,132 1413,146 1420,122 1400,106 1425,104" fill="#ffc300" />
-        <polygon points="1535,155 1544,176 1566,178 1549,192 1555,214 1535,201 1515,214 1521,192 1504,178 1526,176" />
-        <path d="M1460,180 A34,34 0 1,0 1495,230 A26,26 0 1,1 1460,180 Z" fill="#ffd000" />
-      </g>
-    </svg>
-  </div>
+    <!-- Светящийся горизонт снизу как на скринах Джозе -->
+    <rect width="1920" height="1080" fill="url(#horizonGlow)" />
+
+    <!-- Тонкие небесные орбиты и дуги Мементоса -->
+    <g fill="none" stroke="#9beeff" stroke-opacity="0.28" stroke-width="1.8">
+      <ellipse cx="960" cy="1120" rx="1100" ry="680" />
+      <ellipse cx="960" cy="1120" rx="1112" ry="692" stroke-opacity="0.15" />
+      <ellipse cx="960" cy="1180" rx="840" ry="500" stroke="#ffffff" stroke-opacity="0.22" />
+      <path d="M 120,620 Q 960,180 1800,560" stroke="#8be8ff" stroke-opacity="0.2" stroke-dasharray="10 8" />
+    </g>
+
+    <!-- Мелкие мерцающие звезды на небе -->
+    <g fill="#ffffff" opacity="0.75">
+      <circle cx="280" cy="180" r="1.5" />
+      <circle cx="420" cy="95" r="2" />
+      <circle cx="590" cy="240" r="1.2" />
+      <circle cx="760" cy="110" r="1.8" />
+      <circle cx="980" cy="75" r="2.2" />
+      <circle cx="1170" cy="160" r="1.4" />
+      <circle cx="1360" cy="88" r="2" />
+      <circle cx="1510" cy="210" r="1.5" />
+      <circle cx="210" cy="420" r="1.6" />
+      <circle cx="1690" cy="400" r="1.8" />
+      <circle cx="880" cy="290" r="1.3" />
+      <circle cx="1110" cy="310" r="1.5" />
+    </g>
+
+    <!-- Левая верхняя гирлянда крупных желтых звезд и полумесяцев -->
+    <g opacity="0.92">
+      <use href="#jose-star" transform="translate(48, 52) scale(1.6) rotate(-12)" />
+      <use href="#jose-moon" transform="translate(115, 42) scale(1.3) rotate(18)" />
+      <use href="#jose-star" transform="translate(175, 65) scale(1.15) rotate(8)" />
+      <use href="#jose-star" transform="translate(55, 130) scale(1.25) rotate(22)" />
+      <use href="#jose-moon" transform="translate(125, 120) scale(1.05) rotate(-25)" />
+      <use href="#jose-star" transform="translate(32, 210) scale(0.95) rotate(-8)" />
+      <use href="#jose-star" transform="translate(235, 36) scale(0.85) rotate(15)" />
+    </g>
+
+    <!-- Правая верхняя гирлянда крупных желтых звезд и полумесяцев -->
+    <g opacity="0.92">
+      <use href="#jose-star" transform="translate(1865, 55) scale(1.65) rotate(14)" />
+      <use href="#jose-moon" transform="translate(1790, 48) scale(1.3) rotate(-20)" />
+      <use href="#jose-star" transform="translate(1730, 72) scale(1.2) rotate(-10)" />
+      <use href="#jose-star" transform="translate(1855, 138) scale(1.3) rotate(-18)" />
+      <use href="#jose-moon" transform="translate(1785, 130) scale(1.05) rotate(15)" />
+      <use href="#jose-star" transform="translate(1885, 215) scale(0.95) rotate(9)" />
+      <use href="#jose-star" transform="translate(1670, 38) scale(0.85) rotate(-14)" />
+    </g>
+  </svg>
 
   <div class="app-container">
-    <!-- ==================== ВЕРХНЯЯ ПАНЕЛЬ ==================== -->
+    <!-- ==================== ШАПКА ==================== -->
     <header class="topbar">
       <div class="date-badge">
         <span class="date-big" id="ui-date-num">11/08</span>
@@ -825,11 +939,9 @@
           <button type="button" class="btn-ghost btn-sm" id="btn-lang-de" onclick="setLang('de')">de</button>
         </div>
 
-        <!-- РУЧНЫЕ КНОПКИ СОХРАНЕНИЯ И ЗАГРУЗКИ GITHUB + НАГЛЯДНЫЙ СТАТУС -->
-        <button type="button" class="btn btn-sm" onclick="pushToGitHub()" title="Отправить изменения в файл .md на GitHub">↑ сохр. в github</button>
-        <button type="button" class="btn-ghost btn-sm" onclick="pullFromGitHub()" title="Загрузить файл .md из GitHub">↓ загр.</button>
-        <button type="button" class="btn-ghost btn-sm" onclick="openSyncModal()" id="lbl-btn-sync">⚙ github / .md</button>
-        <span class="sync-status-pill" id="topbar-sync-badge">● статус github</span>
+        <!-- GitHub / .md и полный экран -->
+        <button type="button" class="btn btn-sm" onclick="openSyncModal()" id="lbl-btn-sync">⇄ github / .md</button>
+        <button type="button" class="btn-ghost btn-sm" onclick="toggleFullScreen()" title="полный экран">⛶</button>
       </div>
 
       <!-- Счетчик дней до ближайшего дедлайна -->
@@ -842,18 +954,18 @@
       <!-- ================= КОЛОНКА 1: ДЕДЛАЙНЫ И ХРОНИКА ================= -->
       <section class="panel">
         <div class="panel-header">
-          <h2 class="panel-title" id="lbl-deadlines-title">• дедлайны •</h2>
+          <h2 class="panel-title" id="lbl-deadlines-title">дедлайны</h2>
           <button type="button" class="btn btn-sm" id="btn-toggle-dl-form" onclick="toggleDeadlineForm()">+ добавить</button>
         </div>
 
-        <!-- 14-дневный мини-календарь -->
-        <div id="ui-cal-strip" class="cal-strip"></div>
+        <!-- Полоска календаря на ближайшие 14 дней -->
+        <div id="calendar-strip-container" class="cal-strip"></div>
 
-        <!-- Форма нового дедлайна -->
-        <div id="dl-form-container" class="card" style="display: none; margin-bottom: 14px; border-color: var(--accent);">
-          <div style="display: flex; flex-direction: column; gap: 8px;">
+        <!-- Форма добавления дедлайна -->
+        <div id="dl-form-container" class="card" style="display: none; margin-bottom: 16px; border-color: var(--accent);">
+          <div style="display: flex; flex-direction: column; gap: 10px;">
             <input type="text" id="dl-title-input" class="input-field" placeholder="название..." />
-            <div style="display: grid; grid-template-columns: 1fr 1fr 74px; gap: 6px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr 78px; gap: 8px;">
               <input type="date" id="dl-date-input" class="input-field" />
               <select id="dl-stat-select" class="input-field"></select>
               <input type="number" id="dl-pts-input" class="input-field" value="5" min="0" max="100" title="очки" />
@@ -864,11 +976,11 @@
         </div>
 
         <!-- Список активных дедлайнов -->
-        <div id="deadlines-list-container" style="margin-bottom: 22px;"></div>
+        <div id="deadlines-list-container" style="margin-bottom: 24px;"></div>
 
-        <!-- Хроника действий -->
+        <!-- Хроника (история действий и покупок) -->
         <div class="panel-header" style="margin-top: 8px;">
-          <h2 class="panel-title" id="lbl-history-title">• хроника действий •</h2>
+          <h2 class="panel-title" id="lbl-history-title">хроника действий</h2>
           <button type="button" class="btn-ghost btn-sm" onclick="clearHistoryLog()" id="btn-clear-log">очистить</button>
         </div>
         <div id="history-list-container" class="log-list"></div>
@@ -877,40 +989,40 @@
       <!-- ================= КОЛОНКА 2: РАСПОРЯДОК ДНЯ (4 БЛОКА) ================= -->
       <section class="panel">
         <div class="panel-header">
-          <h2 class="panel-title" id="lbl-routine-title">• распорядок дня (4 блока) •</h2>
+          <h2 class="panel-title" id="lbl-routine-title">распорядок дня (4 блока)</h2>
           <button type="button" class="btn-ghost btn-sm" id="btn-reset-day" onclick="resetDailyBlocks()">новый день ↻</button>
         </div>
 
-        <div id="blocks-list-container" style="display: flex; flex-direction: column; gap: 14px;"></div>
+        <div id="blocks-list-container" style="display: flex; flex-direction: column; gap: 16px;"></div>
       </section>
 
-      <!-- ================= КОЛОНКА 3: СТАТЫ И КОПИЛКА (1 ОЧКО = 1 СОМ) ================= -->
+      <!-- ================= КОЛОНКА 3: ЗВЕЗДА СТАТОВ И МАГАЗИН ДЖОЗЕ (1 ОЧКО = 1 СОМ) ================= -->
       <section class="panel">
         <div class="panel-header">
-          <h2 class="panel-title" id="lbl-stats-title">• статы •</h2>
+          <h2 class="panel-title" id="lbl-stats-title">статы</h2>
           <button type="button" class="btn-ghost btn-sm" id="btn-edit-base-stats" onclick="toggleEditStatsModal()">✎ значения</button>
         </div>
 
-        <!-- Ручное редактирование значений статов -->
-        <div id="edit-stats-box" class="card" style="display: none; margin-bottom: 14px; border-color: var(--accent);">
-          <div style="font-weight: 800; font-size: 0.88rem; margin-bottom: 8px;" id="lbl-edit-stats-hint">задать текущие значения статов вручную:</div>
-          <div id="edit-stats-inputs" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px;"></div>
+        <!-- Ручное редактирование базовых цифр статов -->
+        <div id="edit-stats-box" class="card" style="display: none; margin-bottom: 16px; border-color: var(--accent);">
+          <div style="font-weight: 800; font-size: 0.9rem; margin-bottom: 10px;" id="lbl-edit-stats-hint">задать текущие значения статов вручную:</div>
+          <div id="edit-stats-inputs" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px;"></div>
           <button type="button" class="btn btn-sm" style="width: 100%;" onclick="saveManualStats()" id="btn-save-manual-stats">применить</button>
         </div>
 
         <!-- 6-конечная звезда статов -->
         <div class="star-wrapper">
-          <svg id="stats-star-svg" viewBox="0 0 440 300" style="width: 100%; height: auto; display: block;"></svg>
+          <svg id="stats-star-svg" viewBox="0 0 440 320" style="width: 100%; height: auto; display: block;"></svg>
         </div>
 
-        <!-- Плашки выбора стата -->
+        <!-- Кнопки переключения активного стата -->
         <div id="stat-selector-pills" class="stat-pills-row"></div>
 
-        <!-- Добавление очков в выбранный стат (БЕЗ списков заготовок!) -->
+        <!-- Прямое начисление очков (без списков-заготовок!) -->
         <div class="card">
-          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
-            <span style="font-weight: 900; font-size: 1rem; color: var(--accent);" id="selected-stat-header">дисциплина: 30 / 100</span>
-            <span style="font-size: 0.82rem; color: var(--text-muted);" id="lbl-stat-add-sub">1 очко = +1 сом</span>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px;">
+            <span style="font-weight: 900; font-size: 1.05rem; color: var(--accent);" id="selected-stat-header">дисциплина: 30</span>
+            <span style="font-size: 0.84rem; color: var(--text-muted);" id="lbl-stat-add-sub">1 очко = +1 сом</span>
           </div>
 
           <input
@@ -920,41 +1032,41 @@
             placeholder="подробности: за что очки (необязательно)..."
           />
 
-          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px;">
-            <button type="button" class="pt-circle-btn" onclick="addStatPoints(1)">1 pt</button>
-            <button type="button" class="pt-circle-btn" onclick="addStatPoints(2)">2 pt</button>
-            <button type="button" class="pt-circle-btn" onclick="addStatPoints(3)">3 pt</button>
-            <button type="button" class="pt-circle-btn" onclick="addStatPoints(5)">5 pt</button>
-            <button type="button" class="pt-circle-btn" onclick="addStatPoints(10)">10 pt</button>
-            <div style="display: flex; gap: 6px; margin-left: auto;">
-              <input type="number" id="custom-stat-pts" class="input-field" style="width: 68px; padding: 6px 8px;" placeholder="очки" min="1" max="100" />
+          <div class="quick-points-row">
+            <button type="button" class="pt-sphere-btn" onclick="addStatPoints(1)">+1</button>
+            <button type="button" class="pt-sphere-btn" onclick="addStatPoints(2)">+2</button>
+            <button type="button" class="pt-sphere-btn" onclick="addStatPoints(3)">+3</button>
+            <button type="button" class="pt-sphere-btn" onclick="addStatPoints(5)">+5</button>
+            <button type="button" class="pt-sphere-btn" onclick="addStatPoints(10)">+10</button>
+            <div style="display: flex; gap: 6px; margin-left: auto; align-items: center;">
+              <input type="number" id="custom-stat-pts" class="input-field" style="width: 72px; padding: 7px 8px;" placeholder="очки" min="1" max="100" />
               <button type="button" class="btn-ghost btn-sm" onclick="addCustomStatPoints()" id="btn-add-custom-pts">+ ок</button>
             </div>
           </div>
         </div>
 
-        <!-- Копилка наград (1 очко = 1 сом) -->
-        <div class="card" style="margin-top: 14px; border-color: var(--accent);">
-          <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 10px;">
-            <span style="font-weight: 900; font-size: 0.96rem;" id="lbl-wallet-title">❀ копилка (1 очко = 1 сом)</span>
-            <span class="jose-counter-plate" id="ui-wallet-balance">❀ 0 сом</span>
+        <!-- Копилка наград в стиле табличек цветов/штампов Джозе -->
+        <div class="shop-box">
+          <div class="jose-counter-plaque">
+            <span style="font-weight: 800; font-size: 0.95rem; color: var(--text-muted);" id="lbl-wallet-title">❀ копилка (1 очко = 1 сом)</span>
+            <span style="font-weight: 900; font-size: 1.45rem; color: var(--accent);" id="ui-wallet-balance">❀ 0 сом</span>
           </div>
 
-          <!-- Последняя покупка (мотивационный трофей) -->
-          <div style="background: var(--bg-input); border-left: 4px solid var(--accent); border-radius: 8px; padding: 10px 12px; margin-bottom: 10px;">
-            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 2px;" id="lbl-last-bought">последняя покупка:</div>
-            <div style="font-weight: 800; font-size: 0.94rem;" id="ui-last-bought-value">пока пусто</div>
+          <!-- Последняя покупка (дофаминовый якорь) -->
+          <div class="last-bought-banner">
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 3px;" id="lbl-last-bought">последняя покупка:</div>
+            <div style="font-weight: 800; font-size: 0.98rem;" id="ui-last-bought-value">пока пусто</div>
           </div>
 
           <!-- Потратить сомы -->
           <div style="display: flex; flex-direction: column; gap: 8px;">
-            <div style="display: grid; grid-template-columns: 1fr 95px; gap: 8px;">
+            <div style="display: grid; grid-template-columns: 1fr 105px; gap: 8px;">
               <input type="text" id="shop-item-input" class="input-field" placeholder="на что потратить..." />
               <input type="number" id="shop-cost-input" class="input-field" placeholder="сумма" min="1" />
             </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;">
-              <span style="font-size: 0.78rem; color: var(--text-muted);" id="lbl-shop-hint">статы при трате не уменьшаются</span>
-              <button type="button" class="btn btn-sm" onclick="spendWalletSoms()" id="btn-spend-soms">потратить</button>
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 2px;">
+              <span style="font-size: 0.8rem; color: var(--text-muted);" id="lbl-shop-hint">статы при трате не падают</span>
+              <button type="button" class="btn btn-sm" onclick="spendWalletSoms()" id="btn-spend-soms">потратить ★</button>
             </div>
           </div>
         </div>
@@ -963,56 +1075,53 @@
     </main>
   </div>
 
-  <!-- ==================== МОДАЛЬНОЕ ОКНО: GITHUB И ФАЙЛ .MD ==================== -->
+  <!-- ==================== МОДАЛЬНОЕ ОКНО: GITHUB & ОБСИДИАН (.MD) ==================== -->
   <div class="modal-backdrop" id="sync-modal">
     <div class="modal-content">
       <div class="panel-header">
-        <h3 class="panel-title">• github и файл .md •</h3>
+        <h3 class="panel-title">github и файл .md</h3>
         <button type="button" class="btn-ghost btn-sm" onclick="closeSyncModal()">✕ закрыть</button>
       </div>
 
-      <div class="card" style="margin-bottom: 14px;">
-        <div style="font-weight: 800; margin-bottom: 8px;">ручная синхронизация с файлом .md в github:</div>
+      <div class="card" style="margin-bottom: 16px;">
+        <div style="font-weight: 800; margin-bottom: 6px; color: var(--accent);">как убрать адресную строку на телефоне:</div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+          открой страницу в браузере телефона, нажми меню браузера и выбери <b>«добавить на главный экран»</b>. при запуске с иконки сайт открывается во весь экран без верхней строки ввода ссылки.
+        </p>
+      </div>
+
+      <div class="card" style="margin-bottom: 16px;">
+        <div style="font-weight: 800; margin-bottom: 10px;">прямая синхронизация с файлом .md в github:</div>
         <div style="display: flex; flex-direction: column; gap: 10px;">
-          <input type="text" id="gh-repo-input" class="input-field" placeholder="ник/репозиторий (например: blammie0/personallife)" />
-          <input type="text" id="gh-path-input" class="input-field" placeholder="имя файла (например: p5-hud.md)" value="p5-hud.md" />
+          <input type="text" id="gh-repo-input" class="input-field" placeholder="пользователь/репозиторий" />
+          <input type="text" id="gh-path-input" class="input-field" placeholder="путь к файлу (например: data.md)" value="data.md" />
           <input type="password" id="gh-token-input" class="input-field" placeholder="personal access token (ghp_...)" />
-
-          <!-- ЯВНЫЙ БЛОК СТАТУСА СОХРАНЕНИЯ (КРУПНЫЙ И ПОНЯТНЫЙ) -->
-          <div id="gh-modal-status-box" class="sync-status-pill" style="width: 100%; justify-content: center; padding: 10px; font-size: 0.9rem;">
-            ● нажми «сохранить в github» для отправки
-          </div>
-
-          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <button type="button" class="btn-ghost" style="flex: 1;" onclick="pullFromGitHub()">↓ загрузить из github</button>
-            <button type="button" class="btn" style="flex: 1;" onclick="pushToGitHub()">↑ сохранить в github</button>
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <span id="gh-status-text" style="font-size: 0.85rem; color: var(--text-muted);">автосохранение в браузере включено</span>
+            <div style="display: flex; gap: 8px;">
+              <button type="button" class="btn-ghost btn-sm" onclick="pullFromGitHub()">загрузить из github</button>
+              <button type="button" class="btn btn-sm" onclick="pushToGitHub()">сохранить в github</button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="card" style="margin-bottom: 14px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-          <span style="font-weight: 800; font-size: 0.9rem;">готовый .md для obsidian:</span>
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <span style="font-weight: 800; font-size: 0.92rem;">готовый .md для obsidian:</span>
           <div style="display: flex; gap: 8px;">
             <button type="button" class="btn-ghost btn-sm" onclick="copyMarkdownText()">копировать</button>
             <button type="button" class="btn btn-sm" onclick="downloadMarkdownFile()">скачать .md</button>
           </div>
         </div>
-        <textarea id="md-export-textarea" readonly class="input-field" style="height: 170px; font-family: monospace; font-size: 0.82rem;"></textarea>
-      </div>
-
-      <div class="card">
-        <div style="font-weight: 800; margin-bottom: 4px; color: var(--accent);">как убрать адресную строку на телефоне:</div>
-        <p style="font-size: 0.86rem; color: var(--text-muted); line-height: 1.45;">
-          открой страницу в браузере телефона, нажми меню браузера и выбери <b>«добавить на главный экран»</b>. при запуске с иконки сайт открывается во весь экран без верхней строки ввода ссылки.
-        </p>
+        <textarea id="md-export-textarea" readonly class="input-field" style="height: 180px; font-family: monospace; font-size: 0.84rem;"></textarea>
       </div>
     </div>
   </div>
 
   <script>
     /* ==========================================================================
-       1. PWA MANIFEST ДЛЯ ПОЛНОЭКРАННОГО РЕЖИМА НА ТЕЛЕФОНЕ
+       1. PWA MANIFEST ДЛЯ ЗАПУСКА НА ТЕЛЕФОНЕ БЕЗ АДРЕСНОЙ СТРОКИ
        ========================================================================== */
     (function initPWA() {
       const manifest = {
@@ -1020,8 +1129,8 @@
         short_name: "p5 tracker",
         start_url: ".",
         display: "standalone",
-        background_color: "#070b19",
-        theme_color: "#070b19",
+        background_color: "#061529",
+        theme_color: "#061529",
         orientation: "any"
       };
       const blob = new Blob([JSON.stringify(manifest)], { type: "application/json" });
@@ -1032,7 +1141,7 @@
     })();
 
     /* ==========================================================================
-       2. ПЕРЕВОДЫ НА 4 ЯЗЫКА (RU, EN, JA, DE)
+       2. СЛОВАРЬ ПЕРЕВОДОВ (RU, EN, JA, DE) — БЕЗ ВЫДУМАННЫХ ПРИМЕРОВ
        ========================================================================== */
     const STAT_KEYS = [
       "социализация",
@@ -1045,15 +1154,15 @@
 
     const I18N = {
       ru: {
-        deadlinesTitle: "• дедлайны •",
+        deadlinesTitle: "дедлайны",
         addBtn: "+ добавить",
         cancelBtn: "отмена",
         saveDlBtn: "сохранить дедлайн",
-        historyTitle: "• хроника действий •",
+        historyTitle: "хроника действий",
         clearBtn: "очистить",
-        routineTitle: "• распорядок дня (4 блока) •",
+        routineTitle: "распорядок дня (4 блока)",
         newDayBtn: "новый день ↻",
-        statsTitle: "• статы •",
+        statsTitle: "статы",
         editStatsBtn: "✎ значения",
         editStatsHint: "задать текущие значения статов вручную:",
         applyBtn: "применить",
@@ -1061,22 +1170,21 @@
         walletTitle: "❀ копилка (1 очко = 1 сом)",
         lastBought: "последняя покупка:",
         emptyText: "пока пусто",
-        shopHint: "статы при трате не уменьшаются",
-        spendBtn: "потратить",
+        shopHint: "статы при трате не падают",
+        spendBtn: "потратить ★",
         noDeadlines: "активных дедлайнов нет",
-        daysLeftLabel: "дней до",
+        daysLeftLabel: "дней до дедлайна",
         todayLabel: "сегодня",
         overdueLabel: "просрочено",
-        doneBtn: "сдано ✓",
+        doneBtn: "выполнено",
         blockDoneBtn: "выполнено ✓",
         blockCompleteBtn: "засчитать блок",
         noStatOption: "без стата",
         som: "сом",
-        foodStation: "станция еды:",
         placeholders: {
           title: "название...",
           why: "зачем мне это (необязательно)...",
-          food: "что поела...",
+          food: "станция еды: что поела (необязательно)...",
           details: "подробности: что конкретно делала (необязательно)...",
           statReason: "подробности: за что очки (необязательно)...",
           shopItem: "на что потратить...",
@@ -1106,15 +1214,15 @@
         weekdaysShort: ["вс", "пн", "вт", "ср", "чт", "пт", "сб"]
       },
       en: {
-        deadlinesTitle: "• deadlines •",
+        deadlinesTitle: "deadlines",
         addBtn: "+ add",
         cancelBtn: "cancel",
         saveDlBtn: "save deadline",
-        historyTitle: "• action log •",
+        historyTitle: "action log",
         clearBtn: "clear",
-        routineTitle: "• daily schedule (4 blocks) •",
+        routineTitle: "daily schedule (4 blocks)",
         newDayBtn: "new day ↻",
-        statsTitle: "• stats •",
+        statsTitle: "stats",
         editStatsBtn: "✎ values",
         editStatsHint: "set current stat values manually:",
         applyBtn: "apply",
@@ -1123,21 +1231,20 @@
         lastBought: "last purchase:",
         emptyText: "empty",
         shopHint: "spending does not lower stats",
-        spendBtn: "spend",
+        spendBtn: "spend ★",
         noDeadlines: "no active deadlines",
         daysLeftLabel: "days until",
         todayLabel: "today",
         overdueLabel: "overdue",
-        doneBtn: "done ✓",
+        doneBtn: "complete",
         blockDoneBtn: "completed ✓",
         blockCompleteBtn: "complete block",
         noStatOption: "no stat",
         som: "som",
-        foodStation: "food station:",
         placeholders: {
           title: "title...",
           why: "why i need this (optional)...",
-          food: "what i ate...",
+          food: "food station: what i ate (optional)...",
           details: "details: what specifically i did (optional)...",
           statReason: "details: what did i do (optional)...",
           shopItem: "reward to buy...",
@@ -1167,15 +1274,15 @@
         weekdaysShort: ["su", "mo", "tu", "we", "th", "fr", "sa"]
       },
       ja: {
-        deadlinesTitle: "• 締切・ミッション •",
+        deadlinesTitle: "締切・ミッション",
         addBtn: "+ 追加",
         cancelBtn: "閉じる",
         saveDlBtn: "保存する",
-        historyTitle: "• 行動ログ •",
+        historyTitle: "行動ログ",
         clearBtn: "クリア",
-        routineTitle: "• 1日のスケジュール (4枠) •",
+        routineTitle: "1日のスケジュール (4枠)",
         newDayBtn: "新しい日 ↻",
-        statsTitle: "• パラメータ •",
+        statsTitle: "パラメータ",
         editStatsBtn: "✎ 数値編集",
         editStatsHint: "現在のパラメータを直接入力：",
         applyBtn: "適用",
@@ -1184,22 +1291,21 @@
         lastBought: "最後に買ったもの：",
         emptyText: "なし",
         shopHint: "ポイントを使ってもステータスは下がりません",
-        spendBtn: "使う",
+        spendBtn: "交換する ★",
         noDeadlines: "予定なし",
         daysLeftLabel: "残り日数",
         todayLabel: "今日",
         overdueLabel: "期限切れ",
-        doneBtn: "完了 ✓",
+        doneBtn: "完了",
         blockDoneBtn: "完了 ✓",
         blockCompleteBtn: "枠を完了する",
         noStatOption: "なし",
         som: "som",
-        foodStation: "食事記録：",
         placeholders: {
           title: "タイトル...",
           why: "目的・理由 (任意)...",
-          food: "食べたもの...",
-          details: "詳細メモ (任意)...",
+          food: "食事メモ (任意)...",
+          details: "詳細：具体的に何をしたか (任意)...",
           statReason: "詳細：何をしたか (任意)...",
           shopItem: "買うもの...",
           shopCost: "金額"
@@ -1213,7 +1319,7 @@
         categories: {
           study: "1. 授業・課題・プロジェクト",
           creative: "2. 創作（ピアノ・絵）",
-          admission: "3. 進学準備（ドイツ語・ielts等）",
+          admission: "3. 進学準備（enactus・ドイツ語・ielts）",
           rest: "4. 休憩（睡眠・ゲーム・動画）"
         },
         stats: {
@@ -1228,15 +1334,15 @@
         weekdaysShort: ["日", "月", "火", "水", "木", "金", "土"]
       },
       de: {
-        deadlinesTitle: "• fristen •",
+        deadlinesTitle: "fristen",
         addBtn: "+ neu",
         cancelBtn: "abbrechen",
         saveDlBtn: "speichern",
-        historyTitle: "• verlauf •",
+        historyTitle: "verlauf",
         clearBtn: "leeren",
-        routineTitle: "• tagesablauf (4 blöcke) •",
+        routineTitle: "tagesablauf (4 blöcke)",
         newDayBtn: "neuer tag ↻",
-        statsTitle: "• statuswerte •",
+        statsTitle: "statuswerte",
         editStatsBtn: "✎ werte",
         editStatsHint: "aktuelle werte manuell festlegen:",
         applyBtn: "speichern",
@@ -1245,21 +1351,20 @@
         lastBought: "letzter kauf:",
         emptyText: "noch leer",
         shopHint: "ausgeben senkt deine werte nicht",
-        spendBtn: "ausgeben",
+        spendBtn: "einlösen ★",
         noDeadlines: "keine aktiven fristen",
         daysLeftLabel: "tage bis",
         todayLabel: "heute",
         overdueLabel: "überfällig",
-        doneBtn: "erledigt ✓",
+        doneBtn: "erledigt",
         blockDoneBtn: "erledigt ✓",
         blockCompleteBtn: "block abschließen",
         noStatOption: "kein wert",
         som: "som",
-        foodStation: "essen:",
         placeholders: {
           title: "titel...",
           why: "warum (optional)...",
-          food: "was gegessen...",
+          food: "essensstation (optional)...",
           details: "details: was genau gemacht (optional)...",
           statReason: "details: wofür punkte (optional)...",
           shopItem: "belohnung...",
@@ -1268,14 +1373,14 @@
         blocks: {
           b1: "1. nach dem frühstück",
           b2: "2. nach dem mittagessen",
-          b3: "3. nachmittag",
+          b3: "3. nach dem nachmittagssnack",
           b4: "4. nach dem abendessen"
         },
         categories: {
           study: "1. studium / hausaufgaben / projekte",
           creative: "2. kreativität (klavier, zeichnen)",
           admission: "3. bewerbung (enactus, deutsch, ielts)",
-          rest: "4. erholung (schlafen, spielen)"
+          rest: "4. erholung (schlafen, zocken, schauen)"
         },
         stats: {
           "социализация": "sozialisation",
@@ -1291,11 +1396,11 @@
     };
 
     /* ==========================================================================
-       3. НАЧАЛЬНОЕ СОСТОЯНИЕ (ТВОИ БАЗОВЫЕ СТАТЫ, 0 ЗАГЛУШЕК)
+       3. СОСТОЯНИЕ ПРИЛОЖЕНИЯ (БЕЗ ПРИДУМАННЫХ ЗАПИСЕЙ, С ТВОИМИ СТАТАМИ)
        ========================================================================== */
     const STORAGE_KEY = "p5_jose_tracker_v2";
 
-    function createCleanState() {
+    function createInitialState() {
       return {
         theme: "jose",
         lang: "ru",
@@ -1312,18 +1417,16 @@
         lastBought: null,
         deadlines: [],
         dailyBlocks: {
-          b1: { food: "", category: "study", details: "", stat: "эрудиция", pts: 3, done: false },
-          b2: { food: "", category: "admission", details: "", stat: "дисциплина", pts: 3, done: false },
-          b3: { food: "", category: "creative", details: "", stat: "результативность", pts: 3, done: false },
-          b4: { food: "", category: "rest", details: "", stat: "none", pts: 0, done: false }
+          b1: { category: "study", food: "", details: "", stat: "эрудиция", pts: 3, done: false },
+          b2: { category: "admission", food: "", details: "", stat: "дисциплина", pts: 3, done: false },
+          b3: { category: "creative", food: "", details: "", stat: "результативность", pts: 3, done: false },
+          b4: { category: "rest", food: "", details: "", stat: "терпение общества", pts: 2, done: false }
         },
         history: [],
         github: {
-          repo: "blammie0/personallife",
-          path: "p5-hud.md",
-          token: "",
-          lastSavedAt: "",
-          dirty: false
+          repo: "",
+          path: "data.md",
+          token: ""
         }
       };
     }
@@ -1332,51 +1435,35 @@
 
     function loadState() {
       try {
-        const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem("p5_clean_tracker_v1");
-        if (!raw) return createCleanState();
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return createInitialState();
         const parsed = JSON.parse(raw);
-        const base = createCleanState();
+        const base = createInitialState();
         return {
           ...base,
           ...parsed,
           stats: { ...base.stats, ...(parsed.stats || {}) },
           dailyBlocks: {
-            b1: { ...base.dailyBlocks.b1, ...((parsed.dailyBlocks && parsed.dailyBlocks.b1) || {}) },
-            b2: { ...base.dailyBlocks.b2, ...((parsed.dailyBlocks && parsed.dailyBlocks.b2) || {}) },
-            b3: { ...base.dailyBlocks.b3, ...((parsed.dailyBlocks && parsed.dailyBlocks.b3) || {}) },
-            b4: { ...base.dailyBlocks.b4, ...((parsed.dailyBlocks && parsed.dailyBlocks.b4) || {}) }
+            b1: { ...base.dailyBlocks.b1, ...(parsed.dailyBlocks?.b1 || {}) },
+            b2: { ...base.dailyBlocks.b2, ...(parsed.dailyBlocks?.b2 || {}) },
+            b3: { ...base.dailyBlocks.b3, ...(parsed.dailyBlocks?.b3 || {}) },
+            b4: { ...base.dailyBlocks.b4, ...(parsed.dailyBlocks?.b4 || {}) }
           },
           github: { ...base.github, ...(parsed.github || {}) }
         };
       } catch (e) {
-        return createCleanState();
+        return createInitialState();
       }
     }
 
-    function saveState(markDirty = true) {
-      if (markDirty) {
-        state.github.dirty = true;
-        updateSyncStatusUI("unsaved", "● есть несохраненные изменения (нажми ↑ сохр. в github)");
-      }
+    function saveState() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       renderApp();
     }
 
     /* ==========================================================================
-       4. НАГЛЯДНЫЙ ИНДИКАТОР СТАТУСА СОХРАНЕНИЯ GITHUB
+       4. ПЕРЕКЛЮЧЕНИЕ ТЕМЫ, ЯЗЫКА И ПОЛНОГО ЭКРАНА
        ========================================================================== */
-    function updateSyncStatusUI(mode, text) {
-      const topBadge = document.getElementById("topbar-sync-badge");
-      const modalBadge = document.getElementById("gh-modal-status-box");
-
-      [topBadge, modalBadge].forEach(el => {
-        if (!el) return;
-        el.classList.remove("unsaved", "saving", "saved", "error");
-        if (mode) el.classList.add(mode);
-        el.textContent = text;
-      });
-    }
-
     function showToast(msg) {
       const existing = document.querySelector(".toast-popup");
       if (existing) existing.remove();
@@ -1384,7 +1471,7 @@
       el.className = "toast-popup";
       el.textContent = msg;
       document.body.appendChild(el);
-      setTimeout(() => el.remove(), 2500);
+      setTimeout(() => el.remove(), 2300);
     }
 
     function setTheme(themeName) {
@@ -1397,79 +1484,81 @@
         if (btn) btn.classList.toggle("active", t === themeName);
       });
 
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      renderStarRadar();
+      const metaTheme = document.getElementById("meta-theme-color");
+      if (metaTheme) {
+        metaTheme.setAttribute("content", themeName === "jose" ? "#061529" : "#0e0e12");
+      }
+
+      saveState();
     }
 
     function setLang(langCode) {
+      if (!I18N[langCode]) return;
       state.lang = langCode;
       ["ru", "en", "ja", "de"].forEach(l => {
         const btn = document.getElementById("btn-lang-" + l);
         if (btn) btn.classList.toggle("active", l === langCode);
       });
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      renderApp();
+      saveState();
+    }
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen?.().catch(() => {});
+      } else {
+        document.exitFullscreen?.().catch(() => {});
+      }
     }
 
     /* ==========================================================================
-       5. ДАТЫ И 14-ДНЕВНЫЙ КАЛЕНДАРЬ ДЕДЛАЙНОВ
+       5. ДАТА, КАЛЕНДАРЬ И ДЕДЛАЙНЫ
        ========================================================================== */
-    function pad2(n) {
-      return String(n).padStart(2, "0");
+    function formatTimeStamp() {
+      const now = new Date();
+      const pad = n => String(n).padStart(2, "0");
+      return `${pad(now.getDate())}.${pad(now.getMonth() + 1)} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
     }
 
-    function getTodayIso() {
-      const d = new Date();
-      return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+    function getDaysUntil(dateStr) {
+      if (!dateStr) return 0;
+      const now = new Date();
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const [y, m, d] = dateStr.split("-").map(Number);
+      const target = new Date(y, m - 1, d);
+      return Math.round((target - today) / (1000 * 60 * 60 * 24));
     }
 
-    function getNowStamp() {
-      const d = new Date();
-      return `${pad2(d.getDate())}.${pad2(d.getMonth() + 1)} ${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
-    }
-
-    function calcDaysLeft(dateStr) {
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      const parts = (dateStr || "").split("-");
-      if (parts.length !== 3) return 0;
-      const target = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
-      target.setHours(0, 0, 0, 0);
-      return Math.round((target - today) / 86400000);
-    }
-
-    function toggleDeadlineForm(prefillDate) {
+    function toggleDeadlineForm() {
       const form = document.getElementById("dl-form-container");
+      const btn = document.getElementById("btn-toggle-dl-form");
+      const dict = I18N[state.lang];
       const isHidden = form.style.display === "none";
       form.style.display = isHidden ? "block" : "none";
+      btn.textContent = isHidden ? dict.cancelBtn : dict.addBtn;
+
       if (isHidden) {
         const dateInp = document.getElementById("dl-date-input");
-        if (prefillDate) {
-          dateInp.value = prefillDate;
-        } else if (!dateInp.value) {
-          dateInp.value = getTodayIso();
+        if (!dateInp.value) {
+          const tomorrow = new Date(Date.now() + 86400000);
+          dateInp.value = tomorrow.toISOString().slice(0, 10);
         }
-        document.getElementById("dl-title-input").focus();
       }
     }
 
     function addDeadline() {
-      const titleInp = document.getElementById("dl-title-input");
-      const dateInp = document.getElementById("dl-date-input");
-      const statSel = document.getElementById("dl-stat-select");
-      const ptsInp = document.getElementById("dl-pts-input");
-      const whyInp = document.getElementById("dl-why-input");
+      const titleEl = document.getElementById("dl-title-input");
+      const dateEl = document.getElementById("dl-date-input");
+      const statEl = document.getElementById("dl-stat-select");
+      const ptsEl = document.getElementById("dl-pts-input");
+      const whyEl = document.getElementById("dl-why-input");
 
-      const title = titleInp.value.trim();
-      const date = dateInp.value;
-      const stat = statSel.value;
-      const pts = Math.max(0, parseInt(ptsInp.value, 10) || 0);
-      const why = whyInp.value.trim();
+      const title = titleEl.value.trim();
+      const date = dateEl.value;
+      if (!title || !date) return;
 
-      if (!title || !date) {
-        showToast("впиши название и дату дедлайна");
-        return;
-      }
+      const pts = Math.max(0, parseInt(ptsEl.value, 10) || 0);
+      const stat = statEl.value;
+      const why = whyEl.value.trim();
 
       state.deadlines.push({
         id: "dl_" + Date.now(),
@@ -1480,10 +1569,12 @@
         why
       });
 
-      titleInp.value = "";
-      whyInp.value = "";
+      state.deadlines.sort((a, b) => a.date.localeCompare(b.date));
+
+      titleEl.value = "";
+      whyEl.value = "";
       document.getElementById("dl-form-container").style.display = "none";
-      saveState(true);
+      saveState();
     }
 
     function completeDeadline(id) {
@@ -1491,127 +1582,128 @@
       if (idx === -1) return;
       const dl = state.deadlines[idx];
 
-      if (dl.pts > 0 && dl.stat !== "none" && state.stats[dl.stat] !== undefined) {
-        state.stats[dl.stat] = Math.min(100, state.stats[dl.stat] + dl.pts);
+      if (dl.stat && dl.stat !== "none" && dl.pts > 0) {
+        state.stats[dl.stat] = Math.min(100, (state.stats[dl.stat] || 0) + dl.pts);
+      }
+      if (dl.pts > 0) {
         state.walletSom += dl.pts;
       }
 
       state.history.unshift({
-        id: "log_" + Date.now(),
-        time: getNowStamp(),
-        title: `дедлайн: ${dl.title}`,
-        details: dl.why || "",
-        stat: dl.stat,
-        pts: dl.pts
+        time: formatTimeStamp(),
+        title: dl.title,
+        stat: dl.stat !== "none" ? dl.stat : "",
+        pts: dl.pts,
+        food: "",
+        details: dl.why || ""
       });
 
       state.deadlines.splice(idx, 1);
-      saveState(true);
-      showToast(`✓ ${dl.title} (+${dl.pts})`);
+      showToast(`★ +${dl.pts} (${dl.title})`);
+      saveState();
     }
 
     function deleteDeadline(id) {
       state.deadlines = state.deadlines.filter(d => d.id !== id);
-      saveState(true);
+      saveState();
     }
 
     /* ==========================================================================
-       6. 4 БЛОКА РАСПОРЯДКА ДНЯ
+       6. РАСПОРЯДОК ДНЯ (4 БЛОКА)
        ========================================================================== */
     function selectBlockCategory(blockKey, catKey) {
-      state.dailyBlocks[blockKey].category = catKey;
-      saveState(true);
+      const b = state.dailyBlocks[blockKey];
+      if (!b || b.done) return;
+      b.category = catKey;
+      saveState();
     }
 
-    function updateBlockField(blockKey, field, value) {
+    function updateBlockField(blockKey, field, val) {
+      const b = state.dailyBlocks[blockKey];
+      if (!b) return;
       if (field === "pts") {
-        state.dailyBlocks[blockKey].pts = Math.max(0, parseInt(value, 10) || 0);
+        b.pts = Math.max(0, parseInt(val, 10) || 0);
       } else {
-        state.dailyBlocks[blockKey][field] = value;
+        b[field] = val;
       }
-      state.github.dirty = true;
-      updateSyncStatusUI("unsaved", "● есть несохраненные изменения (нажми ↑ сохр. в github)");
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      updateMarkdownPreview();
     }
 
     function completeDailyBlock(blockKey) {
-      const blk = state.dailyBlocks[blockKey];
+      const b = state.dailyBlocks[blockKey];
+      if (!b || b.done) return;
+
       const dict = I18N[state.lang];
+      const pts = Math.max(0, Number(b.pts) || 0);
 
-      if (blk.done) {
-        blk.done = false;
-        saveState(true);
-        return;
+      if (b.stat && b.stat !== "none" && pts > 0) {
+        state.stats[b.stat] = Math.min(100, (state.stats[b.stat] || 0) + pts);
       }
-
-      const pts = Math.max(0, parseInt(blk.pts, 10) || 0);
-      if (pts > 0 && blk.stat !== "none" && state.stats[blk.stat] !== undefined) {
-        state.stats[blk.stat] = Math.min(100, state.stats[blk.stat] + pts);
+      if (pts > 0) {
         state.walletSom += pts;
       }
 
-      blk.done = true;
-      const catLabel = dict.categories[blk.category] || blk.category;
-      const extraDetails = [
-        blk.food ? `еда: ${blk.food}` : "",
-        blk.details ? blk.details : ""
-      ].filter(Boolean).join(" | ");
+      b.done = true;
 
       state.history.unshift({
-        id: "log_" + Date.now(),
-        time: getNowStamp(),
-        title: `${dict.blocks[blockKey]} — ${catLabel}`,
-        details: extraDetails,
-        stat: blk.stat,
-        pts: pts
+        time: formatTimeStamp(),
+        title: `${dict.blocks[blockKey]} — ${dict.categories[b.category]}`,
+        stat: b.stat !== "none" ? b.stat : "",
+        pts: pts,
+        food: (b.food || "").trim(),
+        details: (b.details || "").trim()
       });
 
-      saveState(true);
-      showToast(pts > 0 ? `+${pts} очк. и +${pts} сом ♪` : "блок засчитан ✓");
+      showToast(`★ +${pts} ♪`);
+      saveState();
+    }
+
+    function reopenDailyBlock(blockKey) {
+      const b = state.dailyBlocks[blockKey];
+      if (!b) return;
+      b.done = false;
+      saveState();
     }
 
     function resetDailyBlocks() {
       ["b1", "b2", "b3", "b4"].forEach(k => {
         state.dailyBlocks[k].done = false;
-        state.dailyBlocks[k].details = "";
         state.dailyBlocks[k].food = "";
+        state.dailyBlocks[k].details = "";
       });
-      saveState(true);
-      showToast("блоки очищены на новый день ↻");
+      showToast("↻");
+      saveState();
     }
 
     /* ==========================================================================
-       7. СТАТЫ И КОПИЛКА (1 ОЧКО = 1 СОМ)
+       7. СТАТЫ И КОПИЛКА МОТИВАЦИИ (1 ОЧКО = 1 СОМ)
        ========================================================================== */
     function selectStat(statKey) {
       state.selectedStat = statKey;
-      saveState(false);
+      saveState();
     }
 
-    function addStatPoints(pts) {
-      const amount = Math.max(1, parseInt(pts, 10) || 1);
+    function addStatPoints(amount) {
+      const pts = Math.max(1, parseInt(amount, 10) || 1);
       const st = state.selectedStat;
-      if (state.stats[st] === undefined) return;
+      const reasonEl = document.getElementById("stat-reason-input");
+      const details = reasonEl ? reasonEl.value.trim() : "";
 
-      const reasonInp = document.getElementById("stat-reason-input");
-      const reason = reasonInp ? reasonInp.value.trim() : "";
-
-      state.stats[st] = Math.min(100, state.stats[st] + amount);
-      state.walletSom += amount;
+      state.stats[st] = Math.min(100, (state.stats[st] || 0) + pts);
+      state.walletSom += pts;
 
       state.history.unshift({
-        id: "log_" + Date.now(),
-        time: getNowStamp(),
+        time: formatTimeStamp(),
         title: I18N[state.lang].stats[st] || st,
-        details: reason,
         stat: st,
-        pts: amount
+        pts: pts,
+        food: "",
+        details: details
       });
 
-      if (reasonInp) reasonInp.value = "";
-      saveState(true);
-      showToast(`+${amount} к стату и +${amount} сом ♪`);
+      if (reasonEl) reasonEl.value = "";
+      showToast(`★ ${I18N[state.lang].stats[st]} +${pts} (+${pts} ${I18N[state.lang].som})`);
+      saveState();
     }
 
     function addCustomStatPoints() {
@@ -1632,7 +1724,7 @@
         container.innerHTML = STAT_KEYS.map(k => `
           <div>
             <label style="font-size: 0.78rem; color: var(--text-muted); display: block; margin-bottom: 3px;">${dict.stats[k]}</label>
-            <input type="number" class="input-field manual-stat-inp" data-stat="${k}" value="${state.stats[k]}" min="0" max="100" style="padding: 6px 8px;" />
+            <input type="number" class="input-field manual-stat-inp" data-stat="${k}" value="${state.stats[k] || 0}" min="0" max="100" style="padding: 6px 8px;" />
           </div>
         `).join("");
       }
@@ -1641,155 +1733,153 @@
     function saveManualStats() {
       document.querySelectorAll(".manual-stat-inp").forEach(inp => {
         const k = inp.getAttribute("data-stat");
-        const v = Math.max(0, Math.min(100, parseInt(inp.value, 10) || 0));
+        const v = Math.min(100, Math.max(0, parseInt(inp.value, 10) || 0));
         state.stats[k] = v;
       });
       document.getElementById("edit-stats-box").style.display = "none";
-      saveState(true);
-      showToast("значения статов обновлены ✓");
+      saveState();
     }
 
     function spendWalletSoms() {
-      const itemInp = document.getElementById("shop-item-input");
-      const costInp = document.getElementById("shop-cost-input");
-      const title = itemInp.value.trim();
-      const cost = parseInt(costInp.value, 10) || 0;
+      const itemEl = document.getElementById("shop-item-input");
+      const costEl = document.getElementById("shop-cost-input");
 
-      if (!title || cost <= 0) {
-        showToast("впиши название покупки и сумму");
-        return;
-      }
+      const itemTitle = itemEl.value.trim();
+      const cost = parseInt(costEl.value, 10);
+
+      if (!itemTitle || !cost || cost <= 0) return;
       if (cost > state.walletSom) {
-        showToast("не хватает сомов в копилке!");
+        showToast(`недостаточно сомов (${state.walletSom})`);
         return;
       }
 
       state.walletSom -= cost;
-      const now = new Date();
-      const dateShort = `${pad2(now.getDate())}.${pad2(now.getMonth() + 1)}`;
-      state.lastBought = { title, cost, date: dateShort };
+      const dateShort = formatTimeStamp().split(" ")[0];
+      state.lastBought = {
+        title: itemTitle,
+        cost: cost,
+        date: dateShort
+      };
 
       state.history.unshift({
-        id: "log_" + Date.now(),
-        time: getNowStamp(),
-        title: `покупка: ${title}`,
-        details: `-${cost} сом`,
-        stat: "wallet",
-        pts: -cost
+        time: formatTimeStamp(),
+        title: `❀ ${itemTitle}`,
+        stat: "",
+        pts: -cost,
+        food: "",
+        details: ""
       });
 
-      itemInp.value = "";
-      costInp.value = "";
-      saveState(true);
-      showToast(`куплено: ${title} (-${cost} сом) ★`);
-    }
-
-    function deleteHistoryItem(id) {
-      state.history = state.history.filter(item => item.id !== id);
-      saveState(true);
+      itemEl.value = "";
+      costEl.value = "";
+      showToast(`❀ -${cost} ${I18N[state.lang].som}: ${itemTitle}`);
+      saveState();
     }
 
     function clearHistoryLog() {
       state.history = [];
-      saveState(true);
+      saveState();
     }
 
     /* ==========================================================================
        8. ОТРИСОВКА 6-КОНЕЧНОЙ ЗВЕЗДЫ СТАТОВ (SVG)
        ========================================================================== */
-    function renderStarRadar() {
+    function renderStatsStar() {
       const svg = document.getElementById("stats-star-svg");
       if (!svg) return;
       const dict = I18N[state.lang];
 
       const cx = 220;
-      const cy = 150;
-      const maxR = 92;
-      const angles = [-90, -30, 30, 90, 150, 210].map(a => (a * Math.PI) / 180);
+      const cy = 160;
+      const R = 104;
+      const count = STAT_KEYS.length;
 
-      let gridHtml = "";
-      [0.33, 0.66, 1].forEach(level => {
-        const r = maxR * level;
-        const pts = angles.map(a => `${(cx + r * Math.cos(a)).toFixed(1)},${(cy + r * Math.sin(a)).toFixed(1)}`).join(" ");
-        gridHtml += `<polygon points="${pts}" fill="none" stroke="var(--border-main)" stroke-width="1.2" />`;
-      });
+      const isJose = state.theme === "jose";
+      const isStrict = state.theme === "strict";
+
+      const getAngle = i => (Math.PI * 2 / count) * i - Math.PI / 2;
+
+      let bgPts = [];
+      for (let i = 0; i < count; i++) {
+        const aTip = getAngle(i);
+        const aVal = aTip + Math.PI / count;
+        bgPts.push(`${cx + R * Math.cos(aTip)},${cy + R * Math.sin(aTip)}`);
+        bgPts.push(`${cx + R * 0.42 * Math.cos(aVal)},${cy + R * 0.42 * Math.sin(aVal)}`);
+      }
+
+      let playerPts = [];
+      for (let i = 0; i < count; i++) {
+        const nextI = (i + 1) % count;
+        const v1 = Math.min(100, Math.max(0, state.stats[STAT_KEYS[i]] || 0));
+        const v2 = Math.min(100, Math.max(0, state.stats[STAT_KEYS[nextI]] || 0));
+        const rTip = Math.max(12, (v1 / 100) * R);
+        const rVal = Math.max(9, ((Math.min(v1, v2) / 100) * R) * 0.44);
+        const aTip = getAngle(i);
+        const aVal = aTip + Math.PI / count;
+        playerPts.push(`${cx + rTip * Math.cos(aTip)},${cy + rTip * Math.sin(aTip)}`);
+        playerPts.push(`${cx + rVal * Math.cos(aVal)},${cy + rVal * Math.sin(aVal)}`);
+      }
 
       let axesHtml = "";
-      angles.forEach(a => {
-        const x = (cx + maxR * Math.cos(a)).toFixed(1);
-        const y = (cy + maxR * Math.sin(a)).toFixed(1);
-        axesHtml += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="var(--border-main)" stroke-width="1.2" />`;
-      });
-
-      const starPts = [];
-      for (let i = 0; i < 6; i++) {
-        const key = STAT_KEYS[i];
-        const val = Math.max(6, Math.min(100, state.stats[key] || 0));
-        const outerR = (val / 100) * maxR;
-        starPts.push(`${(cx + outerR * Math.cos(angles[i])).toFixed(1)},${(cy + outerR * Math.sin(angles[i])).toFixed(1)}`);
-
-        const nextKey = STAT_KEYS[(i + 1) % 6];
-        const nextVal = Math.max(6, Math.min(100, state.stats[nextKey] || 0));
-        const innerR = (((val + nextVal) / 2) / 100) * (maxR * 0.44);
-        const midAngle = angles[i] + Math.PI / 6;
-        starPts.push(`${(cx + innerR * Math.cos(midAngle)).toFixed(1)},${(cy + innerR * Math.sin(midAngle)).toFixed(1)}`);
+      for (let i = 0; i < count; i++) {
+        const a = getAngle(i);
+        const tx = cx + R * Math.cos(a);
+        const ty = cy + R * Math.sin(a);
+        axesHtml += `<line x1="${cx}" y1="${cy}" x2="${tx}" y2="${ty}" stroke="${isJose ? '#487ca3' : '#3a3a4c'}" stroke-width="1.5" stroke-dasharray="3,3" />`;
       }
 
       let labelsHtml = "";
       STAT_KEYS.forEach((key, i) => {
-        const a = angles[i];
-        const labelR = maxR + 34;
-        const lx = cx + labelR * Math.cos(a);
-        const ly = cy + labelR * Math.sin(a);
+        const a = getAngle(i);
+        const lx = cx + (R + 40) * Math.cos(a);
+        const ly = cy + (R + 32) * Math.sin(a);
+        const val = state.stats[key] || 0;
+        const labelText = `${dict.stats[key]} (${val})`;
+        const boxW = Math.max(106, labelText.length * 7.2 + 16);
+        const boxH = 26;
         const isSelected = state.selectedStat === key;
-        const text = `${dict.stats[key]} (${state.stats[key]})`;
+
+        const fillBg = isSelected
+          ? (isJose ? "#ffe83b" : (isStrict ? "#ececf0" : "#ffcc00"))
+          : (isJose ? "#091526" : "#14141c");
+        const fillTxt = isSelected ? "#090d16" : "#ffffff";
+        const strokeCol = isSelected ? "#ffffff" : (isJose ? "#8be8ff" : "#525266");
+        const rx = isJose ? 13 : (isStrict ? 4 : 0);
 
         labelsHtml += `
           <g style="cursor: pointer;" onclick="selectStat('${key}')">
-            <text
-              x="${lx.toFixed(1)}"
-              y="${ly.toFixed(1)}"
-              text-anchor="middle"
-              dominant-baseline="middle"
-              fill="${isSelected ? 'var(--accent)' : 'var(--text-main)'}"
-              font-size="12"
-              font-weight="${isSelected ? '900' : '700'}"
-            >${text}</text>
+            <rect x="${lx - boxW / 2}" y="${ly - boxH / 2}" width="${boxW}" height="${boxH}" rx="${rx}" fill="${fillBg}" stroke="${strokeCol}" stroke-width="2" />
+            <text x="${lx}" y="${ly}" fill="${fillTxt}" font-size="11.5" font-weight="800" text-anchor="middle" dominant-baseline="central">${labelText}</text>
           </g>
         `;
       });
 
+      const polyFill = isJose ? "rgba(255, 232, 59, 0.78)" : (isStrict ? "rgba(228, 228, 233, 0.65)" : "rgba(255, 204, 0, 0.78)");
+
       svg.innerHTML = `
-        ${gridHtml}
+        <polygon points="${bgPts.join(" ")}" fill="${isJose ? '#061121' : '#121218'}" stroke="${isJose ? '#8be8ff' : '#ffffff'}" stroke-width="2" />
         ${axesHtml}
-        <polygon points="${starPts.join(" ")}" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5" />
-        <circle cx="${cx}" cy="${cy}" r="3.5" fill="var(--accent)" />
+        <polygon points="${playerPts.join(" ")}" fill="${polyFill}" stroke="#ffffff" stroke-width="2" />
         ${labelsHtml}
       `;
     }
 
     /* ==========================================================================
-       9. ГЛАВНЫЙ РЕНДЕР ИНТЕРФЕЙСА
+       9. ПОЛНЫЙ РЕНДЕР ИНТЕРФЕЙСА
        ========================================================================== */
-    function escapeHtml(str) {
-      return String(str || "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
-    }
-
     function renderApp() {
-      const dict = I18N[state.lang];
-      const now = new Date();
+      const dict = I18N[state.lang] || I18N.ru;
 
-      // Шапка: дата и день недели
-      document.getElementById("ui-date-num").textContent = `${pad2(now.getMonth() + 1)}/${pad2(now.getDate())}`;
+      // 1. Шапка: дата и день недели
+      const now = new Date();
+      const pad = n => String(n).padStart(2, "0");
+      document.getElementById("ui-date-num").textContent = `${pad(now.getMonth() + 1)}/${pad(now.getDate())}`;
       document.getElementById("ui-date-day").textContent = dict.weekdays[now.getDay()];
 
-      // Переводы заголовков и кнопок
+      // 2. Переводы статических заголовков и кнопок
       document.getElementById("lbl-deadlines-title").textContent = dict.deadlinesTitle;
-      document.getElementById("btn-toggle-dl-form").textContent = dict.addBtn;
+      const dlFormVisible = document.getElementById("dl-form-container").style.display !== "none";
+      document.getElementById("btn-toggle-dl-form").textContent = dlFormVisible ? dict.cancelBtn : dict.addBtn;
       document.getElementById("btn-save-dl").textContent = dict.saveDlBtn;
       document.getElementById("lbl-history-title").textContent = dict.historyTitle;
       document.getElementById("btn-clear-log").textContent = dict.clearBtn;
@@ -1812,275 +1902,245 @@
       document.getElementById("shop-item-input").placeholder = dict.placeholders.shopItem;
       document.getElementById("shop-cost-input").placeholder = dict.placeholders.shopCost;
 
-      // Опции статов в форме дедлайна
+      // Кнопки очков в теме Джозе показывают "1 Pt", "2 Pt"...
+      const ptButtons = document.querySelectorAll(".pt-sphere-btn");
+      const ptValues = [1, 2, 3, 5, 10];
+      ptButtons.forEach((btn, idx) => {
+        const v = ptValues[idx];
+        btn.textContent = state.theme === "jose" ? `${v} pt` : `+${v}`;
+      });
+
+      // Селект статов в форме дедлайна
       const dlStatSelect = document.getElementById("dl-stat-select");
-      if (dlStatSelect) {
-        const curVal = dlStatSelect.value || "результативность";
-        dlStatSelect.innerHTML =
-          STAT_KEYS.map(k => `<option value="${k}">${dict.stats[k]}</option>`).join("") +
-          `<option value="none">${dict.noStatOption}</option>`;
-        dlStatSelect.value = curVal;
-      }
+      const prevDlStat = dlStatSelect.value || "результативность";
+      dlStatSelect.innerHTML = [
+        ...STAT_KEYS.map(k => `<option value="${k}">${dict.stats[k]}</option>`),
+        `<option value="none">${dict.noStatOption}</option>`
+      ].join("");
+      dlStatSelect.value = prevDlStat;
 
-      // Сортировка дедлайнов и плашка обратного отсчета
-      const sortedDeadlines = [...state.deadlines]
-        .map(d => ({ ...d, daysLeft: calcDaysLeft(d.date) }))
-        .sort((a, b) => a.daysLeft - b.daysLeft);
-
-      // 14-дневная календарная лента
-      const calStrip = document.getElementById("ui-cal-strip");
-      const dlDatesSet = new Set(state.deadlines.map(d => d.date));
-      let stripHtml = "";
-      for (let i = 0; i < 14; i++) {
-        const d = new Date();
-        d.setDate(d.getDate() + i);
-        const iso = `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
-        const wd = dict.weekdaysShort[d.getDay()];
-        const hasDl = dlDatesSet.has(iso);
-        stripHtml += `
-          <div class="cal-day ${i === 0 ? 'today' : ''} ${hasDl ? 'has-dl' : ''}" onclick="toggleDeadlineForm('${iso}')" title="${iso}">
-            <span class="cal-day-wd">${wd}</span>
-            <span class="cal-day-num">${d.getDate()}</span>
-          </div>
-        `;
-      }
-      calStrip.innerHTML = stripHtml;
-
+      // 3. Плашка обратного отсчета до ближайшего дедлайна в шапке
       const cdBox = document.getElementById("ui-countdown-box");
-      if (sortedDeadlines.length === 0) {
+      if (state.deadlines.length === 0) {
         cdBox.className = "countdown-box";
-        cdBox.innerHTML = `<span style="color: var(--text-muted); font-weight: 700;">${dict.noDeadlines}</span>`;
+        cdBox.innerHTML = `<span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 700;">${dict.noDeadlines}</span>`;
       } else {
-        const nearest = sortedDeadlines[0];
-        const isUrgent = nearest.daysLeft <= 3;
-        cdBox.className = "countdown-box" + (isUrgent ? " urgent" : "");
-        const countStr = nearest.daysLeft < 0
-          ? `${dict.overdueLabel}: ${Math.abs(nearest.daysLeft)}`
-          : (nearest.daysLeft === 0 ? dict.todayLabel : nearest.daysLeft);
+        const nearest = state.deadlines[0];
+        const days = getDaysUntil(nearest.date);
+        const isUrgent = days <= 3;
+        cdBox.className = `countdown-box ${isUrgent ? "urgent" : ""}`;
+        const dayBadge = days < 0 ? dict.overdueLabel : (days === 0 ? dict.todayLabel : days);
         cdBox.innerHTML = `
           <div>
-            <div style="font-size: 0.72rem; color: var(--text-muted);">${dict.daysLeftLabel}:</div>
-            <div style="font-weight: 800; font-size: 0.9rem;">${escapeHtml(nearest.title)}</div>
+            <div style="font-size: 0.74rem; color: var(--text-muted); font-weight: 700;">${dict.daysLeftLabel}:</div>
+            <div style="font-weight: 900; font-size: 0.95rem; max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${escapeHtml(nearest.title)}</div>
           </div>
-          <span class="countdown-num">${countStr}</span>
+          <div class="countdown-num">${dayBadge}</div>
         `;
       }
 
-      // Список карточек дедлайнов
-      const dlListEl = document.getElementById("deadlines-list-container");
-      if (sortedDeadlines.length === 0) {
-        dlListEl.innerHTML = `<div class="empty-state">${dict.noDeadlines}</div>`;
+      // 4. Полоска календаря на 14 дней
+      const calContainer = document.getElementById("calendar-strip-container");
+      const deadlineDates = new Set(state.deadlines.map(d => d.date));
+      let calHtml = "";
+      for (let i = 0; i < 14; i++) {
+        const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
+        const iso = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+        const hasDl = deadlineDates.has(iso);
+        calHtml += `
+          <div class="cal-cell ${i === 0 ? "is-today" : ""} ${hasDl ? "has-deadline" : ""}">
+            <div style="opacity: 0.75;">${dict.weekdaysShort[d.getDay()]}</div>
+            <div style="font-size: 0.92rem; font-weight: 800;">${d.getDate()}</div>
+          </div>
+        `;
+      }
+      calContainer.innerHTML = calHtml;
+
+      // 5. Список дедлайнов
+      const dlList = document.getElementById("deadlines-list-container");
+      if (state.deadlines.length === 0) {
+        dlList.innerHTML = `<div class="empty-state">${dict.noDeadlines}</div>`;
       } else {
-        dlListEl.innerHTML = sortedDeadlines.map(dl => {
-          const badge = dl.daysLeft < 0
-            ? `${dict.overdueLabel} (${Math.abs(dl.daysLeft)})`
-            : (dl.daysLeft === 0 ? dict.todayLabel : `${dl.daysLeft} дн.`);
-          const statTag = dl.stat !== "none" ? `${dict.stats[dl.stat] || dl.stat} +${dl.pts}` : "";
+        dlList.innerHTML = state.deadlines.map(dl => {
+          const days = getDaysUntil(dl.date);
+          const isUrgent = days <= 3;
+          const badgeText = days < 0 ? dict.overdueLabel : (days === 0 ? dict.todayLabel : `${days} d`);
+          const statLabel = dl.stat && dl.stat !== "none" ? `${dict.stats[dl.stat]} +${dl.pts}` : `+${dl.pts}`;
           return `
-            <div class="card" style="border-left: 4px solid ${dl.daysLeft <= 3 ? 'var(--danger)' : 'var(--accent)'};">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+            <div class="card" style="border-left: 5px solid ${isUrgent ? '#ff2a4b' : 'var(--accent)'};">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;">
                 <div>
-                  <div style="font-weight: 800; font-size: 0.98rem;">${escapeHtml(dl.title)}</div>
-                  <div style="font-size: 0.78rem; color: var(--text-muted);">${dl.date}</div>
+                  <div style="font-weight: 900; font-size: 1.02rem;">${escapeHtml(dl.title)}</div>
+                  <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">${dl.date} • ${statLabel}</div>
                 </div>
-                <span style="background: var(--bg-input); border: 1px solid var(--border-main); border-radius: 999px; padding: 2px 10px; font-weight: 800; font-size: 0.8rem;">${badge}</span>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <span style="background: ${isUrgent ? '#ff2a4b' : 'var(--bg-input)'}; color: #ffffff; padding: 3px 9px; border-radius: var(--radius-input); font-size: 0.8rem; font-weight: 900;">${badgeText}</span>
+                  <button type="button" class="btn-ghost btn-sm" style="padding: 4px 8px;" onclick="deleteDeadline('${dl.id}')" title="удалить">✕</button>
+                </div>
               </div>
-              ${dl.why ? `<div style="margin-top: 8px; padding: 6px 10px; background: var(--bg-input); border-left: 3px solid var(--accent-2); border-radius: 6px; font-size: 0.84rem;">${escapeHtml(dl.why)}</div>` : ""}
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
-                <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent);">${statTag}</span>
-                <div style="display: flex; gap: 6px;">
-                  <button type="button" class="btn-ghost btn-sm" onclick="deleteDeadline('${dl.id}')">✕</button>
-                  <button type="button" class="btn btn-sm" onclick="completeDeadline('${dl.id}')">${dict.doneBtn}</button>
-                </div>
+              ${dl.why ? `<div style="margin-top: 8px; padding: 7px 10px; background: var(--bg-input); border-left: 3px solid var(--accent-2); font-size: 0.86rem;">${escapeHtml(dl.why)}</div>` : ""}
+              <div style="margin-top: 10px; display: flex; justify-content: flex-end;">
+                <button type="button" class="btn btn-sm" onclick="completeDeadline('${dl.id}')">${dict.doneBtn} (+${dl.pts})</button>
               </div>
             </div>
           `;
         }).join("");
       }
 
-      // 4 блока распорядка дня
+      // 6. Хроника действий
+      const histContainer = document.getElementById("history-list-container");
+      if (state.history.length === 0) {
+        histContainer.innerHTML = `<div class="empty-state">${dict.emptyText}</div>`;
+      } else {
+        histContainer.innerHTML = state.history.slice(0, 40).map(item => {
+          const ptsSign = item.pts >= 0 ? `+${item.pts}` : `${item.pts}`;
+          const ptsColor = item.pts >= 0 ? "var(--accent)" : "#ff5c77";
+          const statPart = item.stat ? ` • ${dict.stats[item.stat] || item.stat}` : "";
+          return `
+            <div class="log-item">
+              <div style="display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 3px;">
+                <span>${escapeHtml(item.time)}${escapeHtml(statPart)}</span>
+                <span style="font-weight: 900; color: ${ptsColor};">${ptsSign}</span>
+              </div>
+              <div style="font-weight: 800;">${escapeHtml(item.title)}</div>
+              ${item.food ? `<div style="font-size: 0.84rem; color: var(--accent-2); margin-top: 3px;">🍴 ${escapeHtml(item.food)}</div>` : ""}
+              ${item.details ? `<div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 3px;">↳ ${escapeHtml(item.details)}</div>` : ""}
+            </div>
+          `;
+        }).join("");
+      }
+
+      // 7. Распорядок дня (4 блока)
       const blocksContainer = document.getElementById("blocks-list-container");
-      const catKeys = ["study", "creative", "admission", "rest"];
       blocksContainer.innerHTML = ["b1", "b2", "b3", "b4"].map(bKey => {
-        const blk = state.dailyBlocks[bKey];
-        const statOpts =
-          STAT_KEYS.map(sk => `<option value="${sk}" ${blk.stat === sk ? "selected" : ""}>${dict.stats[sk]}</option>`).join("") +
-          `<option value="none" ${blk.stat === "none" ? "selected" : ""}>${dict.noStatOption}</option>`;
+        const b = state.dailyBlocks[bKey];
+        const statOptions = [
+          ...STAT_KEYS.map(sk => `<option value="${sk}" ${b.stat === sk ? "selected" : ""}>${dict.stats[sk]}</option>`),
+          `<option value="none" ${b.stat === "none" ? "selected" : ""}>${dict.noStatOption}</option>`
+        ].join("");
 
         return `
-          <div class="block-card ${blk.done ? "is-done" : ""}">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-              <span class="block-badge">${dict.blocks[bKey]}</span>
+          <div class="block-card ${b.done ? "is-done" : ""}">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px;">
+              <span style="font-weight: 900; font-size: 1.02rem; color: var(--accent);">${dict.blocks[bKey]}</span>
               <div style="display: flex; align-items: center; gap: 6px;">
-                <select class="input-field" style="width: auto; padding: 5px 10px; font-size: 0.82rem;" onchange="updateBlockField('${bKey}', 'stat', this.value)">
-                  ${statOpts}
+                <select class="input-field" style="width: auto; padding: 5px 10px; font-size: 0.85rem;" onchange="updateBlockField('${bKey}', 'stat', this.value)" ${b.done ? "disabled" : ""}>
+                  ${statOptions}
                 </select>
-                <input
-                  type="number"
-                  class="input-field"
-                  style="width: 60px; padding: 5px 8px; font-size: 0.82rem;"
-                  value="${blk.pts}"
-                  min="0"
-                  max="50"
-                  onchange="updateBlockField('${bKey}', 'pts', this.value)"
-                />
+                <input type="number" class="input-field" style="width: 64px; padding: 5px 8px; font-size: 0.85rem; text-align: center;" value="${b.pts}" min="0" max="50" onchange="updateBlockField('${bKey}', 'pts', this.value)" ${b.done ? "disabled" : ""} />
               </div>
             </div>
 
             <!-- Станция еды -->
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-              <span style="font-size: 0.82rem; font-weight: 800; color: var(--accent-2); white-space: nowrap;">🍴 ${dict.foodStation}</span>
-              <input
-                type="text"
-                class="input-field"
-                style="padding: 7px 10px; font-size: 0.88rem;"
-                placeholder="${dict.placeholders.food}"
-                value="${escapeHtml(blk.food)}"
-                oninput="updateBlockField('${bKey}', 'food', this.value)"
-              />
-            </div>
+            <input
+              type="text"
+              class="input-field"
+              style="margin-bottom: 4px;"
+              placeholder="${dict.placeholders.food}"
+              value="${escapeHtml(b.food || "")}"
+              oninput="updateBlockField('${bKey}', 'food', this.value)"
+              ${b.done ? "disabled" : ""}
+            />
 
-            <!-- 4 фиксированные кнопки категорий -->
+            <!-- 4 фиксированные категории -->
             <div class="categories-grid">
-              ${catKeys.map(ck => `
+              ${["study", "creative", "admission", "rest"].map(catKey => `
                 <button
                   type="button"
-                  class="cat-btn ${blk.category === ck ? "selected" : ""}"
-                  onclick="selectBlockCategory('${bKey}', '${ck}')"
-                >${dict.categories[ck]}</button>
+                  class="cat-btn ${b.category === catKey ? "selected" : ""}"
+                  onclick="selectBlockCategory('${bKey}', '${catKey}')"
+                  ${b.done ? "disabled" : ""}
+                >${dict.categories[catKey]}</button>
               `).join("")}
             </div>
 
-            <!-- Поле подробностей + кнопка засчитать -->
-            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 8px;">
+            <!-- Поле подробностей (что конкретно делала) + кнопка выполнения -->
+            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
               <input
                 type="text"
                 class="input-field"
-                style="flex: 1; min-width: 180px;"
+                style="flex: 1; min-width: 200px;"
                 placeholder="${dict.placeholders.details}"
-                value="${escapeHtml(blk.details)}"
+                value="${escapeHtml(b.details || "")}"
                 oninput="updateBlockField('${bKey}', 'details', this.value)"
+                ${b.done ? "disabled" : ""}
               />
-              <button type="button" class="${blk.done ? "btn-ghost" : "btn"}" onclick="completeDailyBlock('${bKey}')">
-                ${blk.done ? dict.blockDoneBtn : `${dict.blockCompleteBtn} ${blk.pts > 0 && blk.stat !== 'none' ? '(+' + blk.pts + ')' : ''}`}
-              </button>
+              ${b.done
+                ? `<button type="button" class="btn-ghost btn-sm" onclick="reopenDailyBlock('${bKey}')">${dict.blockDoneBtn}</button>`
+                : `<button type="button" class="btn" onclick="completeDailyBlock('${bKey}')">${dict.blockCompleteBtn} +${b.pts}</button>`
+              }
             </div>
           </div>
         `;
       }).join("");
 
-      // Звезда статов и плашки выбора
-      renderStarRadar();
-      const pillsEl = document.getElementById("stat-selector-pills");
-      pillsEl.innerHTML = STAT_KEYS.map(k => `
+      // 8. Звезда статов и плашки выбора
+      renderStatsStar();
+
+      const pillsContainer = document.getElementById("stat-selector-pills");
+      pillsContainer.innerHTML = STAT_KEYS.map(k => `
         <button type="button" class="stat-pill-btn ${state.selectedStat === k ? "active" : ""}" onclick="selectStat('${k}')">
           <span>${dict.stats[k]}</span>
-          <span>${state.stats[k]}</span>
+          <span style="font-weight: 900;">${state.stats[k] || 0}</span>
         </button>
       `).join("");
 
-      document.getElementById("selected-stat-header").textContent =
-        `${dict.stats[state.selectedStat]}: ${state.stats[state.selectedStat]} / 100`;
+      document.getElementById("selected-stat-header").textContent = `${dict.stats[state.selectedStat]}: ${state.stats[state.selectedStat] || 0} / 100`;
 
-      // Кошелек и последняя покупка
+      // 9. Копилка сомов и последняя покупка
       document.getElementById("ui-wallet-balance").textContent = `❀ ${state.walletSom} ${dict.som}`;
-      const lbEl = document.getElementById("ui-last-bought-value");
+      const lastBoughtEl = document.getElementById("ui-last-bought-value");
       if (state.lastBought && state.lastBought.title) {
-        lbEl.textContent = `${state.lastBought.title} — ${state.lastBought.cost} ${dict.som} (${state.lastBought.date})`;
+        lastBoughtEl.textContent = `${state.lastBought.title} — ${state.lastBought.cost} ${dict.som} (${state.lastBought.date})`;
       } else {
-        lbEl.textContent = dict.emptyText;
+        lastBoughtEl.textContent = dict.emptyText;
       }
+    }
 
-      // Хроника действий
-      const histEl = document.getElementById("history-list-container");
-      if (state.history.length === 0) {
-        histEl.innerHTML = `<div class="empty-state">${dict.emptyText}</div>`;
-      } else {
-        histEl.innerHTML = state.history.slice(0, 50).map(item => {
-          const ptsBadge = item.pts > 0 ? `+${item.pts}` : (item.pts < 0 ? `${item.pts}` : "✓");
-          return `
-            <div class="log-item">
-              <div style="flex: 1;">
-                <div style="font-size: 0.75rem; color: var(--text-muted);">${escapeHtml(item.time)}</div>
-                <div style="font-weight: 800;">${escapeHtml(item.title)}</div>
-                ${item.details ? `<div style="font-size: 0.83rem; color: var(--text-muted); margin-top: 2px;">${escapeHtml(item.details)}</div>` : ""}
-              </div>
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <span style="font-weight: 900; color: ${item.pts < 0 ? 'var(--danger)' : 'var(--accent)'};">${ptsBadge}</span>
-                <button type="button" class="btn-ghost btn-sm" style="padding: 2px 7px;" onclick="deleteHistoryItem('${item.id}')" title="удалить запись">✕</button>
-              </div>
-            </div>
-          `;
-        }).join("");
-      }
-
-      updateMarkdownPreview();
+    function escapeHtml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
     }
 
     /* ==========================================================================
-       10. ГЕНЕРАЦИЯ MARKDOWN (.MD) И РУЧНАЯ СИНХРОНИЗАЦИЯ GITHUB (БЕЗ ОШИБКИ 409)
+       10. ЭКСПОРТ В OBSIDIAN (.MD) И СИНХРОНИЗАЦИЯ С GITHUB
        ========================================================================== */
-    function generateMarkdown() {
-      const lines = ["---"];
-      STAT_KEYS.forEach(k => {
-        lines.push(`${k}: ${state.stats[k]}`);
-      });
-      lines.push(`wallet_som: ${state.walletSom}`);
-      lines.push(`last_bought: "${state.lastBought ? state.lastBought.title.replace(/"/g, "'") : ""}"`);
-      lines.push(`updated: "${getNowStamp()}"`);
-      lines.push("---", "");
-
-      lines.push("# дедлайны");
-      if (state.deadlines.length === 0) {
-        lines.push("- нет активных дедлайнов");
-      } else {
-        state.deadlines.forEach(d => {
-          lines.push(`- [ ] ${d.date} | ${d.title} | ${d.stat} +${d.pts}${d.why ? " | зачем: " + d.why : ""}`);
-        });
-      }
-      lines.push("");
-
-      lines.push("# распорядок дня (4 блока)");
-      ["b1", "b2", "b3", "b4"].forEach(k => {
-        const b = state.dailyBlocks[k];
-        const mark = b.done ? "x" : " ";
-        const catName = I18N.ru.categories[b.category] || b.category;
-        const foodTxt = b.food ? ` | еда: ${b.food}` : "";
-        const detTxt = b.details ? ` | подробности: ${b.details}` : "";
-        lines.push(`- [${mark}] ${I18N.ru.blocks[k]}: ${catName} (${b.stat} +${b.pts})${foodTxt}${detTxt}`);
-      });
-      lines.push("");
-
-      lines.push("# хроника действий");
-      state.history.forEach(h => {
-        const sign = h.pts > 0 ? `+${h.pts}` : h.pts;
-        lines.push(`- **${h.time}** | ${h.title} (${sign})${h.details ? " — " + h.details : ""}`);
-      });
-      lines.push("");
-
-      // Встраиваем JSON-слепок в комментарий для 100% точного восстановления между ПК и телефоном
-      const syncData = {
-        stats: state.stats,
-        walletSom: state.walletSom,
-        lastBought: state.lastBought,
-        deadlines: state.deadlines,
-        dailyBlocks: state.dailyBlocks,
-        history: state.history
-      };
-      lines.push(`<!-- P5_STATE_JSON:${JSON.stringify(syncData)} -->`);
+    function generateMarkdownContent() {
+      const lines = [
+        "---",
+        ...STAT_KEYS.map(k => `${k}: ${state.stats[k] || 0}`),
+        `wallet_som: ${state.walletSom}`,
+        `last_bought: "${state.lastBought ? `${state.lastBought.title} (${state.lastBought.cost} сом)` : ""}"`,
+        `updated: "${formatTimeStamp()}"`,
+        "---",
+        "",
+        "# p5 life tracker",
+        "",
+        "## дедлайны",
+        ...(state.deadlines.length === 0
+          ? ["- нет активных дедлайнов"]
+          : state.deadlines.map(d => `- [ ] **${d.title}** (${d.date}) | \`${d.stat} +${d.pts}\`${d.why ? ` — зачем: ${d.why}` : ""}`)),
+        "",
+        "## хроника действий",
+        ...(state.history.length === 0
+          ? ["- записей пока нет"]
+          : state.history.map(h => `- **${h.time}** | **${h.title}** (${h.pts >= 0 ? "+" + h.pts : h.pts})${h.food ? ` | еда: ${h.food}` : ""}${h.details ? ` — ${h.details}` : ""}`)),
+        "",
+        "<!-- P5_STATE_JSON_START",
+        JSON.stringify(state),
+        "P5_STATE_JSON_END -->"
+      ];
       return lines.join("\n");
-    }
-
-    function updateMarkdownPreview() {
-      const area = document.getElementById("md-export-textarea");
-      if (area) area.value = generateMarkdown();
     }
 
     function openSyncModal() {
       document.getElementById("gh-repo-input").value = state.github.repo || "";
-      document.getElementById("gh-path-input").value = state.github.path || "p5-hud.md";
+      document.getElementById("gh-path-input").value = state.github.path || "data.md";
       document.getElementById("gh-token-input").value = state.github.token || "";
-      updateMarkdownPreview();
+      document.getElementById("md-export-textarea").value = generateMarkdownContent();
       document.getElementById("sync-modal").classList.add("open");
     }
 
@@ -2088,186 +2148,113 @@
       document.getElementById("sync-modal").classList.remove("open");
     }
 
-    function readGithubInputs() {
-      const repoEl = document.getElementById("gh-repo-input");
-      const pathEl = document.getElementById("gh-path-input");
-      const tokenEl = document.getElementById("gh-token-input");
-
-      if (repoEl && repoEl.value.trim()) state.github.repo = repoEl.value.trim();
-      if (pathEl && pathEl.value.trim()) state.github.path = pathEl.value.trim();
-      if (tokenEl && tokenEl.value.trim()) state.github.token = tokenEl.value.trim();
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    }
-
     function copyMarkdownText() {
       const area = document.getElementById("md-export-textarea");
       area.select();
       document.execCommand("copy");
-      showToast("скопировано в буфер ✓");
+      showToast("скопировано в буфер обмена");
     }
 
     function downloadMarkdownFile() {
-      const blob = new Blob([generateMarkdown()], { type: "text/markdown;charset=utf-8" });
+      const content = generateMarkdownContent();
+      const blob = new Blob([content], { type: "text/markdown;charset=utf-8" });
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
-      a.download = state.github.path || "p5-hud.md";
+      a.download = state.github.path || "data.md";
       a.click();
     }
 
-    function utf8ToBase64(str) {
-      return btoa(unescape(encodeURIComponent(str)));
+    async function pushToGithub() {
+  saveGhInputs();
+  const st = document.getElementById('ghStatus');
+  if (!state.ghRepo || !state.ghToken) { st.textContent = 'впиши repo и token'; return; }
+  st.textContent = 'отправка...';
+  try {
+    const cleanRepo = state.ghRepo.trim().replace(/^\/+|\/+$/g, '');
+    const cleanPath = (state.ghPath || 'p5-hud.md').trim().replace(/^\/+/, '');
+    const baseUrl = `https://api.github.com/repos/${cleanRepo}/contents/${cleanPath}`;
+    const headers = {
+      'Authorization': `Bearer ${state.ghToken.trim()}`,
+      'Accept': 'application/vnd.github+json'
+    };
+
+    // 1. Запрашиваем актуальный sha файла в обход кеша браузера (?t=...), чтобы не было ошибки 409/422
+    let sha = undefined;
+    const getRes = await fetch(`${baseUrl}?t=${Date.now()}`, {
+      method: 'GET',
+      headers,
+      cache: 'no-store'
+    });
+    if (getRes.ok) {
+      const getJson = await getRes.json();
+      sha = getJson.sha;
     }
 
-    function base64ToUtf8(b64) {
-      return decodeURIComponent(escape(atob(b64.replace(/\s/g, ""))));
+    // 2. Кодируем текст .md и отправляем с актуальным sha
+    const contentB64 = btoa(unescape(encodeURIComponent(buildMarkdown())));
+    const bodyObj = { message: 'update p5 hud', content: contentB64 };
+    if (sha) bodyObj.sha = sha;
+
+    const putRes = await fetch(baseUrl, {
+      method: 'PUT',
+      headers: { ...headers, 'Content-Type': 'application/json' },
+      body: JSON.stringify(bodyObj)
+    });
+
+    if (!putRes.ok) {
+      const errData = await putRes.json().catch(() => ({}));
+      throw new Error(`${putRes.status}: ${errData.message || 'error'}`);
     }
+    st.textContent = 'сохранено в github ✓ (' + new Date().toLocaleTimeString().slice(0,5) + ')';
+  } catch (e) {
+    st.textContent = 'ошибка: ' + e.message;
+  }
+}
 
-    /* РУЧНОЕ СОХРАНЕНИЕ В GITHUB (ДОСТУПНО И ПО ИМЕНИ pushToGitHub, И ПО pushGithub) */
-    async function pushToGitHub() {
-      readGithubInputs();
-
-      if (!state.github.repo || !state.github.token) {
-        openSyncModal();
-        updateSyncStatusUI("error", "✗ впиши ник/репозиторий и токен ghp_...");
-        return;
-      }
-
-      updateSyncStatusUI("saving", "⏳ сохранение в github...");
-
-      try {
-        const cleanRepo = state.github.repo.trim().replace(/^https?:\/\/github\.com\//i, "").replace(/^\/+|\/+$/g, "");
-        const cleanPath = (state.github.path || "p5-hud.md").trim().replace(/^\/+/, "");
-        const baseUrl = `https://api.github.com/repos/${cleanRepo}/contents/${cleanPath}`;
-        const headers = {
-          "Authorization": `Bearer ${state.github.token.trim()}`,
-          "Accept": "application/vnd.github+json"
-        };
-
-        // 1. Всегда запрашиваем свежий sha в обход кеша браузера (?t=...), чтобы не было ошибки 409 Conflict
-        let sha = null;
-        const getRes = await fetch(`${baseUrl}?t=${Date.now()}`, {
-          method: "GET",
-          headers,
-          cache: "no-store"
-        });
-
-        if (getRes.ok) {
-          const fileData = await getRes.json();
-          sha = fileData.sha;
-        } else if (getRes.status !== 404) {
-          const errJson = await getRes.json().catch(() => ({}));
-          throw new Error(`GET ${getRes.status}: ${errJson.message || "ошибка доступа"}`);
-        }
-
-        // 2. Записываем обновленный .md файл
-        const body = {
-          message: "manual save p5-hud.md",
-          content: utf8ToBase64(generateMarkdown())
-        };
-        if (sha) body.sha = sha;
-
-        const putRes = await fetch(baseUrl, {
-          method: "PUT",
-          headers: {
-            ...headers,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(body)
-        });
-
-        if (!putRes.ok) {
-          const errJson = await putRes.json().catch(() => ({}));
-          throw new Error(`PUT ${putRes.status}: ${errJson.message || "ошибка записи"}`);
-        }
-
-        const nowTime = new Date().toLocaleTimeString().slice(0, 8);
-        state.github.dirty = false;
-        state.github.lastSavedAt = nowTime;
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-
-        updateSyncStatusUI("saved", `✓ сохранено в github в ${nowTime}`);
-        showToast(`✓ сохранено в github (${nowTime})`);
-      } catch (e) {
-        updateSyncStatusUI("error", `✗ ошибка сохранения: ${e.message}`);
-        showToast(`✗ ошибка: ${e.message}`);
-      }
-    }
-
-    /* РУЧНАЯ ЗАГРУЗКА ИЗ GITHUB */
     async function pullFromGitHub() {
-      readGithubInputs();
+      const repo = document.getElementById("gh-repo-input").value.trim();
+      const path = document.getElementById("gh-path-input").value.trim() || "data.md";
+      const token = document.getElementById("gh-token-input").value.trim();
+      const statusEl = document.getElementById("gh-status-text");
 
-      if (!state.github.repo || !state.github.token) {
-        openSyncModal();
-        updateSyncStatusUI("error", "✗ впиши ник/репозиторий и токен ghp_...");
+      state.github = { repo, path, token };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+
+      if (!repo || !token) {
+        statusEl.textContent = "укажи репозиторий и токен";
         return;
       }
 
-      updateSyncStatusUI("saving", "⏳ загрузка из github...");
-
+      statusEl.textContent = "загрузка из github...";
       try {
-        const cleanRepo = state.github.repo.trim().replace(/^https?:\/\/github\.com\//i, "").replace(/^\/+|\/+$/g, "");
-        const cleanPath = (state.github.path || "p5-hud.md").trim().replace(/^\/+/, "");
-        const url = `https://api.github.com/repos/${cleanRepo}/contents/${cleanPath}?t=${Date.now()}`;
-
-        const res = await fetch(url, {
-          method: "GET",
-          headers: {
-            "Authorization": `Bearer ${state.github.token.trim()}`,
-            "Accept": "application/vnd.github+json"
-          },
-          cache: "no-store"
+        const apiUrl = `https://api.github.com/repos/${repo}/contents/${path}`;
+        const res = await fetch(apiUrl, {
+          headers: { Authorization: `token ${token}` }
         });
-
-        if (!res.ok) {
-          const errJson = await res.json().catch(() => ({}));
-          throw new Error(`${res.status}: ${errJson.message || "файл не найден"}`);
-        }
-
+        if (!res.ok) throw new Error("not found");
         const data = await res.json();
-        const mdText = base64ToUtf8(data.content);
-        const match = mdText.match(/<!--\s*P5_STATE_JSON:(.+?)\s*-->/);
-
+        const decoded = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ""))));
+        const match = decoded.match(/<!-- P5_STATE_JSON_START\s*([\s\S]*?)\s*P5_STATE_JSON_END -->/);
         if (match && match[1]) {
-          const parsed = JSON.parse(match[1]);
-          if (parsed.stats) state.stats = { ...state.stats, ...parsed.stats };
-          if (typeof parsed.walletSom === "number") state.walletSom = parsed.walletSom;
-          if (parsed.lastBought !== undefined) state.lastBought = parsed.lastBought;
-          if (Array.isArray(parsed.deadlines)) state.deadlines = parsed.deadlines;
-          if (parsed.dailyBlocks) state.dailyBlocks = { ...state.dailyBlocks, ...parsed.dailyBlocks };
-          if (Array.isArray(parsed.history)) state.history = parsed.history;
+          const loaded = JSON.parse(match[1]);
+          state = { ...state, ...loaded, github: { repo, path, token } };
+          setTheme(state.theme || "jose");
+          setLang(state.lang || "ru");
+          saveState();
+          document.getElementById("md-export-textarea").value = generateMarkdownContent();
+          statusEl.textContent = "данные загружены из github ✓";
+          showToast("загружено из github ✓");
+        } else {
+          statusEl.textContent = "в файле не найден блок состояния";
         }
-
-        const nowTime = new Date().toLocaleTimeString().slice(0, 8);
-        state.github.dirty = false;
-        state.github.lastSavedAt = nowTime;
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-
-        renderApp();
-        updateSyncStatusUI("saved", `✓ загружено из github в ${nowTime}`);
-        showToast(`✓ данные загружены из github (${nowTime})`);
       } catch (e) {
-        updateSyncStatusUI("error", `✗ ошибка загрузки: ${e.message}`);
-        showToast(`✗ ошибка загрузки: ${e.message}`);
+        statusEl.textContent = "ошибка загрузки из github";
       }
     }
-
-    // Привязываем оба варианта названия функций к window, чтобы onclick никогда не выдавал ReferenceError
-    window.pushToGitHub = pushToGitHub;
-    window.pushToGithub = pushToGitHub;
-    window.pushGithub = pushToGitHub;
-    window.pullFromGitHub = pullFromGitHub;
-    window.pullFromGithub = pullFromGitHub;
-    window.pullGithub = pullFromGitHub;
 
     // Инициализация при старте
     setTheme(state.theme || "jose");
     setLang(state.lang || "ru");
-    if (state.github.lastSavedAt && !state.github.dirty) {
-      updateSyncStatusUI("saved", `✓ сохранено в ${state.github.lastSavedAt}`);
-    } else {
-      updateSyncStatusUI("", "● ручное сохранение");
-    }
   </script>
 </body>
 </html>
